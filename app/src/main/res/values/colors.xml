@@ -12,4 +12,5 @@
     <color name="primary_super_dark">#11261c</color>
     <color name="background_super_dark">#ff292929</color>
     <color name="hint_disabled_dark">#43000000</color>
+    <color name="navi_item_bg">#ffffff</color>
 </resources>

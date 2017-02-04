@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Glimpse</string>
+    <string name="navi_header_lines">The best chance to realize your dream exists one decade ago or now.</string>
+    <string name="navi_item_title_zhihu">知乎日报</string>
+    <string name="navi_theme_setting_title">设置</string>
 </resources>

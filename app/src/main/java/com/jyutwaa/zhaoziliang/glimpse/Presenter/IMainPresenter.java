@@ -5,5 +5,5 @@ package com.jyutwaa.zhaoziliang.glimpse.Presenter;
  */
 
 public interface IMainPresenter extends BasePresenter {
-    void getPic();
+    void getBackground();
 }

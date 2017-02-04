@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <group
+        android:id="@+id/contents">
+
+        <item
+            android:id="@+id/zhihu"
+            android:checkable="true"
+            android:title="@string/navi_item_title_zhihu"
+            app:itemIconTint="@color/navi_item_bg" />
+
+    </group>
+
+    <group
+        android:id="@+id/settings">
+        <item
+            android:id="@+id/theme_setting"
+            android:title="@string/navi_theme_setting_title"
+            android:icon="@drawable/ic_color_lens_white_24dp"
+            app:actionLayout="@layout/theme_switch" />
+
+    </group>
+</menu>

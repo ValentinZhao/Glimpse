@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/navi_header"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="220dp"
+    android:background="@color/primary"
+    android:padding="16dp"
+    android:fitsSystemWindows="true"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark"
+    >
+
+    <TextView
+        android:id="@+id/navi_header_lines"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="120dp"
+        android:text="@string/navi_header_lines"
+        android:textSize="16sp"
+        android:maxLines="3"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"/>
+
+</RelativeLayout>
