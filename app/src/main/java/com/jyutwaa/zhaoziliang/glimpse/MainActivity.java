@@ -2,6 +2,7 @@ package com.jyutwaa.zhaoziliang.glimpse;
 
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -13,6 +14,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.ActionMenuView;
 import android.support.v7.widget.SwitchCompat;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +25,7 @@ import android.widget.CompoundButton;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.jyutwaa.zhaoziliang.glimpse.Activity.BaseActivity;
 import com.jyutwaa.zhaoziliang.glimpse.Fragment.ZhihuFragment;
@@ -30,6 +33,8 @@ import com.jyutwaa.zhaoziliang.glimpse.Presenter.presenterImpl.IMainPresenterImp
 import com.jyutwaa.zhaoziliang.glimpse.Presenter.viewImpl.IMain;
 import com.jyutwaa.zhaoziliang.glimpse.Utils.SharedPreferenceUtils;
 import com.jyutwaa.zhaoziliang.glimpse.Utils.ViewUtils;
+
+import java.io.File;
 
 public class MainActivity extends BaseActivity implements IMain{
 
@@ -52,6 +57,7 @@ public class MainActivity extends BaseActivity implements IMain{
     };
     private int [] textColor = new int[]{Color.BLACK, Color.BLACK};
     private int [] iconColor = new int[]{Color.GRAY, Color.BLACK};
+    private long exitTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -253,7 +259,11 @@ public class MainActivity extends BaseActivity implements IMain{
         @Override
         public boolean onMenuItemClick(MenuItem item) {
             switch(item.getItemId()){
-                case R.id.zhihu:
+                case R.id.menu_open:
+                    drawer.openDrawer(GravityCompat.END);
+                    break;
+                case R.id.menu_about:
+                    Toast.makeText(MainActivity.this, "进入作者介绍页面!", Toast.LENGTH_SHORT).show();
                     break;
                 default:
                     break;
@@ -264,6 +274,48 @@ public class MainActivity extends BaseActivity implements IMain{
 
     @Override
     public void getPic() {
+        View headerView = navigationView.getHeaderView(0);
+        RelativeLayout rl_image = (RelativeLayout) headerView.findViewById(R.id.navi_header);
+        if(new File(getFilesDir().getPath() + "/bg.jpg").exists()){
+            BitmapDrawable bitmapDrawable = new BitmapDrawable(getResources(), getFilesDir().getPath() + "/bg.jpg");
+            rl_image.setBackground(bitmapDrawable);
+        }
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(drawer.isDrawerOpen(GravityCompat.END)){
+            drawer.closeDrawer(GravityCompat.END);
+        } else {
+            if(System.currentTimeMillis() - exitTime > 2000){
+                Toast.makeText(this, "再点一次以退出程序", Toast.LENGTH_SHORT).show();
+                exitTime = System.currentTimeMillis();
+            } else {
+                super.onBackPressed();
+            }
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    public interface LoadingMore {
+
+        void loadingStart();
+
+        void loadingfinish();
     }
 }
