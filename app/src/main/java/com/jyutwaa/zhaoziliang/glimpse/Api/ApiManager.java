@@ -44,7 +44,7 @@ public class ApiManager {
 
     public static ApiManager mApiManager;
     private Object monitor = new Object();
-    private static File httpCacheDirectory = new File(MyApplication.getApplication().getCacheDir(), "zhihuCache");
+    private static File httpCacheDirectory = new File(MyApplication.getContext().getCacheDir(), "zhihuCache");
     private static int cacheSize = 10 * 1024 * 1024;//10 MB
     private static Cache cache = new Cache(httpCacheDirectory, cacheSize);
     private static OkHttpClient client = new OkHttpClient().newBuilder()

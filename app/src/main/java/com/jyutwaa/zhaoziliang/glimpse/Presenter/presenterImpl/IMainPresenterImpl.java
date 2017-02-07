@@ -14,6 +14,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
 
+import rx.Observer;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Func1;
 import rx.schedulers.Schedulers;
@@ -52,7 +53,25 @@ public class IMainPresenterImpl extends BasePresenterImpl implements IMainPresen
                                 e.printStackTrace();
                             }
                         }
+                        return true;
                     }
                 })
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<Boolean>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        mIMain.getPic();
+                    }
+
+                    @Override
+                    public void onNext(Boolean aBoolean) {
+                        mIMain.getPic();
+                    }
+                });
     }
 }

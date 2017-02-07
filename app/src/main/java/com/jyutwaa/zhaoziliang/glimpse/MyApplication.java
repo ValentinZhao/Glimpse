@@ -30,7 +30,7 @@ public class MyApplication extends Application {
         return mApplication;
     }
 
-    public static Context getApplication(){
+    public static Context getApplication() {
         return mApplication;
     }
 
