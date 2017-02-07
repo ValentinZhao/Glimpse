@@ -1,17 +1,25 @@
 package com.jyutwaa.zhaoziliang.glimpse;
 
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.util.SimpleArrayMap;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.ActionMenuView;
+import android.support.v7.widget.SwitchCompat;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.WindowInsets;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LinearInterpolator;
+import android.widget.CompoundButton;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -21,6 +29,7 @@ import com.jyutwaa.zhaoziliang.glimpse.Fragment.ZhihuFragment;
 import com.jyutwaa.zhaoziliang.glimpse.Presenter.presenterImpl.IMainPresenterImpl;
 import com.jyutwaa.zhaoziliang.glimpse.Presenter.viewImpl.IMain;
 import com.jyutwaa.zhaoziliang.glimpse.Utils.SharedPreferenceUtils;
+import com.jyutwaa.zhaoziliang.glimpse.Utils.ViewUtils;
 
 public class MainActivity extends BaseActivity implements IMain{
 
@@ -29,11 +38,20 @@ public class MainActivity extends BaseActivity implements IMain{
     private NavigationView navigationView;
     private RelativeLayout rl_navi_header;
     private DrawerLayout drawer;
+    private SwitchCompat sc_theme;
 
     private IMainPresenterImpl mainPresenter;
     private SimpleArrayMap<Integer, String> mTitleMap;
     private int navigationId;
     private MenuItem currentMenuItem;
+    private Fragment currentFragment;
+
+    private int [][] state = new int[][]{
+            new int[] {-android.R.attr.checked},
+            new int[] {android.R.attr.checked}
+    };
+    private int [] textColor = new int[]{Color.BLACK, Color.BLACK};
+    private int [] iconColor = new int[]{Color.GRAY, Color.BLACK};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,12 +86,100 @@ public class MainActivity extends BaseActivity implements IMain{
                     switchFragment(title, fragment);
                 }
             }
+        } else {
+            if(currentMenuItem != null){
+                Fragment fragment = findFragmentById(currentMenuItem.getItemId());
+                String title = mTitleMap.get(currentMenuItem.getItemId());
+                if(fragment != null){
+                    switchFragment(title, fragment);
+                }
+            } else {
+                switchFragment(" ", new ZhihuFragment());
+                currentMenuItem = navigationView.getMenu().findItem(R.id.zhihu);
+            }
+        }
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(MenuItem item) {
+                if(currentMenuItem != null && currentMenuItem != item){
+                    currentMenuItem.setChecked(false);
+                    SharedPreferenceUtils.setNaivigationMenuItemId(MainActivity.this, currentMenuItem.getItemId());
+                    currentMenuItem = item;
+                    currentMenuItem.setChecked(true);
+                    switchFragment(mTitleMap.get(currentMenuItem.getItemId()), findFragmentById(R.id.zhihu));
+                }
+                drawer.closeDrawer(GravityCompat.END);
+                return true;
+            }
+        });
+        if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP) {
+
+            drawer.setOnApplyWindowInsetsListener(new View.OnApplyWindowInsetsListener() {
+                @Override
+                public WindowInsets onApplyWindowInsets(View v, WindowInsets insets) {
+                    // inset the toolbar down by the status bar height
+                    ViewGroup.MarginLayoutParams lpToolbar = (ViewGroup.MarginLayoutParams) toolBar
+                            .getLayoutParams();
+                    lpToolbar.topMargin += insets.getSystemWindowInsetTop();
+                    lpToolbar.rightMargin += insets.getSystemWindowInsetRight();
+                    toolBar.setLayoutParams(lpToolbar);
+
+                    // inset the grid top by statusbar+toolbar & the bottom by the navbar (don't clip)
+                    fl_fragContainer.setPadding(fl_fragContainer.getPaddingLeft(),
+                            insets.getSystemWindowInsetTop() + ViewUtils
+                                    .getActionBarSize(MainActivity.this),
+                            fl_fragContainer.getPaddingRight() + insets.getSystemWindowInsetRight(), // landscape
+                            fl_fragContainer.getPaddingBottom() + insets.getSystemWindowInsetBottom());
+
+                    // we place a background behind the status bar to combine with it's semi-transparent
+                    // color to get the desired appearance.  Set it's height to the status bar height
+                    View statusBarBackground = findViewById(R.id.status_bar_bg_color);
+                    FrameLayout.LayoutParams lpStatus = (FrameLayout.LayoutParams)
+                            statusBarBackground.getLayoutParams();
+                    lpStatus.height = insets.getSystemWindowInsetTop();
+                    statusBarBackground.setLayoutParams(lpStatus);
+
+                    // inset the filters list for the status bar / navbar
+                    // need to set the padding end for landscape case
+
+                    // clear this listener so insets aren't re-applied
+                    drawer.setOnApplyWindowInsetsListener(null);
+                    return insets.consumeSystemWindowInsets();
+                }
+            });
         }
 
+        navigationView.setItemTextColor(new ColorStateList(state, textColor));
+        navigationView.setItemIconTintList(new ColorStateList(state, iconColor));
+        changeThemes();
+    }
+
+    private void changeThemes() {
+        MenuItem item = navigationView.getMenu().findItem(R.id.theme_setting);
+        sc_theme = (SwitchCompat) MenuItemCompat.getActionView(item).findViewById(R.id.sc_theme);
+        sc_theme.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                sc_theme.setChecked(isChecked);
+                if(isChecked){
+                    setThemeColor(Color.MAGENTA);
+                } else {
+                    setThemeColor(getResources().getColor(R.color.colorPrimaryDark));
+                }
+            }
+        });
+    }
+
+    private void setThemeColor(int colorId) {
+        getWindow().setStatusBarColor(colorId);
+        toolBar.setBackgroundColor(colorId);
     }
 
     private void switchFragment(String title, Fragment fragment) {
-
+        if(currentFragment == null || !currentFragment.getClass().getName().equals(fragment.getClass().getName())){
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
+            currentFragment = fragment;
+        }
     }
 
     private Fragment findFragmentById(int itemId) {
