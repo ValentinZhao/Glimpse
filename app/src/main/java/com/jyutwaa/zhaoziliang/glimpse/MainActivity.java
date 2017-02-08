@@ -64,6 +64,7 @@ public class MainActivity extends BaseActivity implements IMain{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initWidgets();
+        setThemeColor(getResources().getColor(R.color.status_bar_color));
         mainPresenter = new IMainPresenterImpl(this, this);
         mTitleMap = new SimpleArrayMap<>();
         mainPresenter.getBackground();
@@ -170,7 +171,7 @@ public class MainActivity extends BaseActivity implements IMain{
                 if(isChecked){
                     setThemeColor(Color.MAGENTA);
                 } else {
-                    setThemeColor(getResources().getColor(R.color.colorPrimaryDark));
+                    setThemeColor(getResources().getColor(R.color.status_bar_color));
                 }
             }
         });

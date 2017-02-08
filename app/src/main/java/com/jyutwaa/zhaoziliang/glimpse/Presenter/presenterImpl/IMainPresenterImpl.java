@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
 import com.jyutwaa.zhaoziliang.glimpse.Api.ApiManager;
+import com.jyutwaa.zhaoziliang.glimpse.Config.Config;
 import com.jyutwaa.zhaoziliang.glimpse.Model.MainBgImage.ImageResponse;
 import com.jyutwaa.zhaoziliang.glimpse.Presenter.IMainPresenter;
 import com.jyutwaa.zhaoziliang.glimpse.Presenter.viewImpl.IMain;
@@ -44,7 +45,7 @@ public class IMainPresenterImpl extends BasePresenterImpl implements IMainPresen
                             try {
                                 Bitmap bitmap = BitmapFactory.decodeStream(new URL(imageResponse.getImageData().getBase_url()
                                     + imageResponse.getImageData().getImages().get(0).getImage_url()
-                                    + "?imageMogr/v2/auto-orient/thumbnail/480x320/quality/100")
+                                    + Config.LOWER_HEADER_PIC_DENSITY)
                                     .openConnection()
                                     .getInputStream());
                                 bitmap.compress(Bitmap.CompressFormat.JPEG, 100,

@@ -8,6 +8,7 @@
         <item
             android:id="@+id/zhihu"
             android:checkable="true"
+            android:icon="@drawable/zhihu_icon"
             android:title="@string/navi_item_title_zhihu"
             app:itemIconTint="@color/navi_item_bg" />
 
