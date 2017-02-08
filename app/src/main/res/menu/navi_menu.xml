@@ -19,7 +19,7 @@
         <item
             android:id="@+id/theme_setting"
             android:title="@string/navi_theme_setting_title"
-            android:icon="@drawable/ic_color_lens_white_24dp"
+            android:icon="@drawable/theme_setting"
             app:actionLayout="@layout/theme_switch" />
 
     </group>

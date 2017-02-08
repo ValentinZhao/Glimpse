@@ -86,7 +86,7 @@ public class MainActivity extends BaseActivity implements IMain{
                 currentMenuItem = navigationView.getMenu().findItem(R.id.zhihu);
             }
             if(currentMenuItem != null){
-                currentMenuItem.setChecked(true);
+                currentMenuItem.setChecked(false);
                 Fragment fragment = findFragmentById(currentMenuItem.getItemId());
                 String title = mTitleMap.get(currentMenuItem.getItemId());
                 if(fragment != null){
@@ -157,7 +157,7 @@ public class MainActivity extends BaseActivity implements IMain{
         }
 
         navigationView.setItemTextColor(new ColorStateList(state, textColor));
-        navigationView.setItemIconTintList(new ColorStateList(state, iconColor));
+        navigationView.setItemIconTintList(null);
         changeThemes();
     }
 
