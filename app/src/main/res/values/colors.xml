@@ -13,4 +13,5 @@
     <color name="background_super_dark">#ff292929</color>
     <color name="hint_disabled_dark">#43000000</color>
     <color name="navi_item_bg">#ffffff</color>
+    <color name="divider">#1f000000</color>
 </resources>
