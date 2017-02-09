@@ -6,5 +6,7 @@ package com.jyutwaa.zhaoziliang.glimpse.Config;
 
 public class Config {
 
-    public static String LOWER_HEADER_PIC_DENSITY = "?imageMogr/v2/auto-orient/thumbnail/480x320/quality/100";
+    public static final String LOWER_HEADER_PIC_DENSITY = "?imageMogr/v2/auto-orient/thumbnail/480x320/quality/100";
+
+    public static final String ZHIHU = "zhihu";
 }

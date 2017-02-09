@@ -81,4 +81,21 @@ public class ApiManager {
         }
         return mMainImageApi;
     }
+
+    public ZhihuApi mZhihuApi;
+    public ZhihuApi getZhihuApiService(){
+        if(mZhihuApi == null){
+            synchronized (monitor){
+                if(mZhihuApi == null){
+                    mZhihuApi = new Retrofit.Builder()
+                            .baseUrl("http://news-at.zhihu.com")
+                            .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                            .client(client)
+                            .addConverterFactory(GsonConverterFactory.create())
+                            .build().create(ZhihuApi.class);
+                }
+            }
+        }
+        return mZhihuApi;
+    }
 }
