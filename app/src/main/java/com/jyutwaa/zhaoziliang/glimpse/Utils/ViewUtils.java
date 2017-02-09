@@ -19,4 +19,9 @@ public class ViewUtils {
         }
         return actionBarSize;
     }
+
+    public static int dp2px(Context context, float dp){
+        float density = context.getResources().getDisplayMetrics().density;
+        return (int) (dp * density + 0.5f);
+    }
 }
