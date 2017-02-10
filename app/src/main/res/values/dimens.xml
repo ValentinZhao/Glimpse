@@ -5,4 +5,13 @@
     <dimen name="divider_height">1px</dimen>
     <dimen name="image_width">93dp</dimen>
     <dimen name="touch_raise">6dp</dimen>
+    <dimen name="item_padding">1dp</dimen>
+    <dimen name="item_image_width">93dp</dimen>
+    <dimen name="item_image_height">24dp</dimen>
+    <dimen name="item_image_vertical_margin">5dp</dimen>
+    <dimen name="item_image_horizontal_margin">11dp</dimen>
+    <dimen name="item_image_padding_normal">16dp</dimen>
+    <dimen name="item_text_size">18sp</dimen>
+    <dimen name="spacing_large">32dp</dimen>
+    <dimen name="spacing_huge">64dp</dimen>
 </resources>

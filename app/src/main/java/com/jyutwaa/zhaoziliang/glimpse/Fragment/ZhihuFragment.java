@@ -55,7 +55,6 @@ public class ZhihuFragment extends BaseFragment implements IZhihuFragment{
         setRetainInstance(true);
         View view = inflater.inflate(R.layout.fragment_zhihu, container, false);
         initWidgets(view);
-        checkNetowrkAvailability();
         return view;
     }
 
@@ -156,6 +155,7 @@ public class ZhihuFragment extends BaseFragment implements IZhihuFragment{
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initListeners();
+        checkNetowrkAvailability();
         initViewAndLaunch();
     }
 

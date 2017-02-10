@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ll_zhihu_item"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:foreground="@drawable/ripple_grey"
+    android:paddingTop="@dimen/item_padding"
+    android:paddingBottom="@dimen/item_padding"
+    android:stateListAnimator="@animator/raise">
+
+    <com.jyutwaa.zhaoziliang.glimpse.Widgets.BadgedFourThreeImageView
+        android:id="@+id/zhihu_item_image"
+        android:layout_width="@dimen/item_image_width"
+        android:layout_height="@dimen/item_image_height"
+        android:layout_marginTop="@dimen/item_image_vertical_margin"
+        android:layout_marginBottom="@dimen/item_image_vertical_margin"
+        android:layout_marginLeft="@dimen/item_image_horizontal_margin"
+        android:elevation="2dp"
+        android:foreground="@drawable/ripple_grey"
+        android:stateListAnimator="@animator/raise"
+        app:badgeGravity="end|bottom"
+        app:badgePadding="@dimen/item_image_padding_normal"
+        />
+
+    <TextView
+        android:id="@+id/zhihu_item_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1"
+        android:stateListAnimator="@animator/raise"
+        android:textColor="@color/text_color"
+        android:textSize="@dimen/item_text_size"/>
+
+
+</LinearLayout>

@@ -14,4 +14,8 @@
     <color name="hint_disabled_dark">#43000000</color>
     <color name="navi_item_bg">#ffffff</color>
     <color name="divider">#1f000000</color>
+    <color name="text_color">#000000</color>
+    <color name="mid_grey">#40808080</color>
+    <color name="gif_badge_dark_image">#b3ffffff</color>
+    <color name="gif_badge_light_image">#40000000</color>
 </resources>
