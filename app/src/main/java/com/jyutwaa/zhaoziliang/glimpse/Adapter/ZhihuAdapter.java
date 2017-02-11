@@ -31,7 +31,7 @@ import com.jyutwaa.zhaoziliang.glimpse.Utils.ViewUtils;
 import com.jyutwaa.zhaoziliang.glimpse.Widgets.BadgedFourThreeImageView;
 import com.jyutwaa.zhaoziliang.glimpse.Widgets.DribbbleTarget;
 import com.jyutwaa.zhaoziliang.glimpse.Widgets.ObservableColorMatrix;
-import com.jyutwaa.zhaoziliang.glimpse.ZhihuDetailPageActivity;
+import com.jyutwaa.zhaoziliang.glimpse.Activity.ZhihuDetailPageActivity;
 
 import java.util.ArrayList;
 

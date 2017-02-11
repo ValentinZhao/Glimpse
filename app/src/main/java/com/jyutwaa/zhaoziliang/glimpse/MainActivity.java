@@ -64,7 +64,7 @@ public class MainActivity extends BaseActivity implements IMain{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initWidgets();
-        setThemeColor(getResources().getColor(R.color.status_bar_color));
+        setThemeColor(getResources().getColor(R.color.immersive_bars));
         mainPresenter = new IMainPresenterImpl(this, this);
         mTitleMap = new SimpleArrayMap<>();
         mainPresenter.getBackground();

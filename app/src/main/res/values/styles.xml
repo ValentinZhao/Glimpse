@@ -44,7 +44,7 @@
         <item name="android:windowSharedElementsUseOverlay">false</item>
     </style>
 
-    <style name="Glimpse.Translucent">
+    <style name="Theme.AppCompat.Translucent" parent="Glimpse.Home">
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:colorBackgroundCacheHint">@null</item>
         <item name="android:windowIsTranslucent">true</item>

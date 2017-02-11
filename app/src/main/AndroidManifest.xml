@@ -15,7 +15,8 @@
         android:supportsRtl="true"
         android:name=".MyApplication"
         android:theme="@style/Glimpse.Home">
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,8 +24,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:theme="@android:style/Theme.Translucent"
-            android:name=".ZhihuDetailPageActivity" />
+            android:theme="@style/Theme.AppCompat.Translucent"
+            android:name=".Activity.ZhihuDetailPageActivity" />
     </application>
 
 </manifest>

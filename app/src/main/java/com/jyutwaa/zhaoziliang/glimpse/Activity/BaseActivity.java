@@ -33,13 +33,6 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        overridePendingTransition(0, R.animator.slide_right_out);
-    }
-
-
-    @Override
     protected void onResume() {
         super.onResume();
         baseActivity = this;

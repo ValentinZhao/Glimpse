@@ -1,9 +1,9 @@
 package com.jyutwaa.zhaoziliang.glimpse.Activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.jyutwaa.zhaoziliang.glimpse.R;
@@ -13,7 +13,7 @@ import com.jyutwaa.zhaoziliang.glimpse.Widgets.SwipeBackLayout;
  * Created by zhaoziliang on 17/2/11.
  */
 
-public class BaseDetailPageActivity extends Activity {
+public class BaseDetailPageActivity extends AppCompatActivity {
 
     SwipeBackLayout mSwipeBackLayout;
 
