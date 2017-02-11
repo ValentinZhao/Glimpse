@@ -55,11 +55,11 @@ public class ApiManager {
 
     public static ApiManager getInstance(){
         if(mApiManager == null){
-            synchronized(ApiManager.class){
+             synchronized(ApiManager.class){
                 if(mApiManager == null){
                     mApiManager = new ApiManager();
                 }
-            }
+             }
         }
 
         return mApiManager;

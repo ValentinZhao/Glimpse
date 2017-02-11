@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
  * Created by zhaoziliang on 17/2/9.
  */
 
-public class ZhihuStory {
+public class ZhihuDetailPage {
     @SerializedName("body")
     String body;
 

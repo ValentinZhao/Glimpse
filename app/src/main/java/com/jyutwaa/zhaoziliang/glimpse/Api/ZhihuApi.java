@@ -1,7 +1,7 @@
 package com.jyutwaa.zhaoziliang.glimpse.Api;
 
 import com.jyutwaa.zhaoziliang.glimpse.Model.Zhihu.ZhihuDaily;
-import com.jyutwaa.zhaoziliang.glimpse.Model.Zhihu.ZhihuStory;
+import com.jyutwaa.zhaoziliang.glimpse.Model.Zhihu.ZhihuDetailPage;
 
 import retrofit2.http.GET;
 import retrofit2.http.Path;
@@ -20,5 +20,5 @@ public interface ZhihuApi {
     Observable<ZhihuDaily> getTheDaily(@Path("date") String date);
 
     @GET("/api/4/news/{id}")
-    Observable<ZhihuStory> getStory(@Path("id") String id);
+    Observable<ZhihuDetailPage> getZhihuDetailPage(@Path("id") String id);
 }

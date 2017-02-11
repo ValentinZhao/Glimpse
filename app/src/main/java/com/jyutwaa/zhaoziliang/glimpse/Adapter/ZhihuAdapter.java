@@ -5,6 +5,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.ColorMatrixColorFilter;
 import android.support.v7.widget.RecyclerView;
@@ -30,6 +31,7 @@ import com.jyutwaa.zhaoziliang.glimpse.Utils.ViewUtils;
 import com.jyutwaa.zhaoziliang.glimpse.Widgets.BadgedFourThreeImageView;
 import com.jyutwaa.zhaoziliang.glimpse.Widgets.DribbbleTarget;
 import com.jyutwaa.zhaoziliang.glimpse.Widgets.ObservableColorMatrix;
+import com.jyutwaa.zhaoziliang.glimpse.ZhihuDetailPageActivity;
 
 import java.util.ArrayList;
 
@@ -108,7 +110,8 @@ public class ZhihuAdapter extends RecyclerView.Adapter implements MainActivity.L
         holder.itemLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mContext, "进入知乎详情页", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(mContext, "进入知乎详情页", Toast.LENGTH_SHORT).show();
+                enterDetailPageActivity(holder, zhihuDailyItem);
             }
         });
 
@@ -195,6 +198,16 @@ public class ZhihuAdapter extends RecyclerView.Adapter implements MainActivity.L
         notifyItemRemoved(loadingPos);
     }
 
+    private void enterDetailPageActivity(RecyclerView.ViewHolder viewHolder, ZhihuDailyItem item) {
+        DBUtils.getDB(mContext).addHasReadInfo(Config.ZHIHU, item.getId(), 1);
+        NormalViewHolder holder = (NormalViewHolder) viewHolder;
+        holder.itemText.setTextColor(Color.GRAY);
+        Intent intent = new Intent(mContext, ZhihuDetailPageActivity.class);
+        intent.putExtra("id", item.getId());
+        intent.putExtra("title", item.getTitle());
+        mContext.startActivity(intent);
+    }
+
     public void clearData() {
         mZhihuDailyItems.clear();
         notifyDataSetChanged();
@@ -205,12 +218,12 @@ public class ZhihuAdapter extends RecyclerView.Adapter implements MainActivity.L
         notifyDataSetChanged();
     }
 
-    static class NormalViewHolder extends RecyclerView.ViewHolder{
+    private static class NormalViewHolder extends RecyclerView.ViewHolder{
         TextView itemText;
         BadgedFourThreeImageView itemImage;
         LinearLayout itemLayout;
 
-        public NormalViewHolder(View itemView) {
+        NormalViewHolder(View itemView) {
             super(itemView);
             itemText = (TextView) itemView.findViewById(R.id.zhihu_item_text);
             itemImage = (BadgedFourThreeImageView) itemView.findViewById(R.id.zhihu_item_image);
@@ -218,11 +231,11 @@ public class ZhihuAdapter extends RecyclerView.Adapter implements MainActivity.L
         }
     }
 
-    static class LoadingMoreViewHolder extends RecyclerView.ViewHolder{
+    private static class LoadingMoreViewHolder extends RecyclerView.ViewHolder{
 
         ProgressBar progressBar;
 
-        public LoadingMoreViewHolder(View itemView) {
+        LoadingMoreViewHolder(View itemView) {
             super(itemView);
             progressBar = (ProgressBar) itemView;
         }

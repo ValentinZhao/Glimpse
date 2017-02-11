@@ -24,7 +24,7 @@
         </activity>
         <activity
             android:theme="@android:style/Theme.Translucent"
-            android:name=".Activity.ZhihuDetailPageActivity" />
+            android:name=".ZhihuDetailPageActivity" />
     </application>
 
 </manifest>

@@ -7,7 +7,7 @@ import com.jyutwaa.zhaoziliang.glimpse.Api.ApiManager;
 import com.jyutwaa.zhaoziliang.glimpse.Config.Config;
 import com.jyutwaa.zhaoziliang.glimpse.Model.Zhihu.ZhihuDaily;
 import com.jyutwaa.zhaoziliang.glimpse.Model.Zhihu.ZhihuDailyItem;
-import com.jyutwaa.zhaoziliang.glimpse.Presenter.IZhuhuPresenter;
+import com.jyutwaa.zhaoziliang.glimpse.Presenter.IZhihuPresenter;
 import com.jyutwaa.zhaoziliang.glimpse.Presenter.viewImpl.IZhihuFragment;
 import com.jyutwaa.zhaoziliang.glimpse.Utils.CacheUtil;
 
@@ -21,7 +21,7 @@ import rx.schedulers.Schedulers;
  * Created by zhaoziliang on 17/2/9.
  */
 
-public class IZhihuPresenterImpl extends BasePresenterImpl implements IZhuhuPresenter{
+public class IZhihuPresenterImpl extends BasePresenterImpl implements IZhihuPresenter {
 
     private IZhihuFragment mIZhihuFragment;
     private CacheUtil mCacheUtil;
