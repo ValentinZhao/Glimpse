@@ -14,4 +14,6 @@
     <dimen name="item_text_size">18sp</dimen>
     <dimen name="spacing_large">32dp</dimen>
     <dimen name="spacing_huge">64dp</dimen>
+    <dimen name="touched_app_bar">8dp</dimen>
+    <dimen name="z_app_bar">4dp</dimen>
 </resources>

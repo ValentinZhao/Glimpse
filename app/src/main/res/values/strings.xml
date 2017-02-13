@@ -3,4 +3,7 @@
     <string name="navi_header_lines">The best chance to realize your dream exists one decade ago or now.</string>
     <string name="navi_item_title_zhihu">知乎日报</string>
     <string name="navi_theme_setting_title">改变主题颜色</string>
+    <string name="transition_shot_background" translatable="false">shot_background</string>
+    <string name="transition_shot">shot</string>
+    <string name="detail_toolbar_title">知乎精选</string>
 </resources>
