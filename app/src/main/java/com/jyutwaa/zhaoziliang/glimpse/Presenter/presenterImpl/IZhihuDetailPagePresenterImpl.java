@@ -18,6 +18,10 @@ public class IZhihuDetailPagePresenterImpl extends BasePresenterImpl implements 
 
     private IZhihuDetailPage mIZhihuDetailPage;
 
+    public IZhihuDetailPagePresenterImpl(IZhihuDetailPage mIZhihuDetailPage) {
+        this.mIZhihuDetailPage = mIZhihuDetailPage;
+    }
+
     @Override
     public void getDetailPage(String id) {
         Subscription subscription = ApiManager.getInstance().getZhihuApiService().getZhihuDetailPage(id)
