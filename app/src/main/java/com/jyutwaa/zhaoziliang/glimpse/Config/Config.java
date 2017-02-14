@@ -11,4 +11,6 @@ public class Config {
     public static final String ZHIHU = "zhihu";
 
     public static final String IS_READ_NAME = "IsRead";
+
+    public static boolean isNight = false;
 }
