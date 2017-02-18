@@ -13,4 +13,6 @@ public class Config {
     public static final String IS_READ_NAME = "IsRead";
 
     public static boolean isNight = false;
+
+    public static String TIAN_API_KEY = "712c0d48373237c90c954d846c5bff5b";
 }
