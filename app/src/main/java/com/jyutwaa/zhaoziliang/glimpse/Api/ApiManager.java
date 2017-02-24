@@ -35,7 +35,7 @@ public class ApiManager {
                 int maxOfflineDuration = 60 * 60 * 24 * 7 * 4;//offline cache could be reached within 4 weeks
                 return originalResponse.newBuilder()
                         .removeHeader("Pragma")
-                        .removeHeader("Cache=Control")
+                        .removeHeader("Cache-Control")
                         .header("Cache-Control", "public, only-if-cached, max-stale=" + maxOfflineDuration)
                         .build();
             }
@@ -97,5 +97,22 @@ public class ApiManager {
             }
         }
         return mZhihuApi;
+    }
+
+    public BilibiliTopListApi mBilibiliApi;
+    public BilibiliTopListApi getBilibiliApiService(){
+        if(mBilibiliApi == null){
+            synchronized(monitor){
+                if(mBilibiliApi == null){
+                    mBilibiliApi = new Retrofit.Builder()
+                            .baseUrl("http://api.bilibili.cn")
+                            .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                            .client(client)
+                            .addConverterFactory(GsonConverterFactory.create())
+                            .build().create(BilibiliTopListApi.class);
+                }
+            }
+        }
+        return mBilibiliApi;
     }
 }
