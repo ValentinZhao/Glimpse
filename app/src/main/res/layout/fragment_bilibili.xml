@@ -11,7 +11,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/immersive_bars"
+        android:paddingTop="?android:actionBarSize"
         app:tabTextColor="@android:color/white"
+        app:tabMode="scrollable"
         app:tabSelectedTextColor="@android:color/white"
         app:tabIndicatorColor="@android:color/white"/>
 

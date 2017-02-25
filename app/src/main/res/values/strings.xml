@@ -6,4 +6,5 @@
     <string name="transition_shot_background" translatable="false">shot_background</string>
     <string name="transition_shot">shot</string>
     <string name="detail_toolbar_title">知乎精选</string>
+    <string name="navi_item_bilibili">哔哩哔哩周榜</string>
 </resources>

@@ -28,6 +28,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jyutwaa.zhaoziliang.glimpse.Activity.BaseActivity;
+import com.jyutwaa.zhaoziliang.glimpse.Fragment.Bilibili.BilibiliMainFragment;
 import com.jyutwaa.zhaoziliang.glimpse.Fragment.Zhihu.ZhihuFragment;
 import com.jyutwaa.zhaoziliang.glimpse.Presenter.presenterImpl.IMainPresenterImpl;
 import com.jyutwaa.zhaoziliang.glimpse.Presenter.viewImpl.IMain;
@@ -113,7 +114,7 @@ public class MainActivity extends BaseActivity implements IMain{
                     SharedPreferenceUtils.setNaivigationMenuItemId(MainActivity.this, currentMenuItem.getItemId());
                     currentMenuItem = item;
                     currentMenuItem.setChecked(true);
-                    switchFragment(mTitleMap.get(currentMenuItem.getItemId()), findFragmentById(R.id.zhihu));
+                    switchFragment(mTitleMap.get(currentMenuItem.getItemId()), findFragmentById(currentMenuItem.getItemId()));
                 }
                 drawer.closeDrawer(GravityCompat.END);
                 return true;
@@ -169,7 +170,7 @@ public class MainActivity extends BaseActivity implements IMain{
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 sc_theme.setChecked(isChecked);
                 if(isChecked){
-                    setThemeColor(Color.MAGENTA);
+                    setThemeColor(R.color.primary);
                 } else {
                     setThemeColor(getResources().getColor(R.color.status_bar_color));
                 }
@@ -195,6 +196,8 @@ public class MainActivity extends BaseActivity implements IMain{
             case R.id.zhihu:
                 fragment = new ZhihuFragment();
                 break;
+            case R.id.bilibili:
+                fragment = new BilibiliMainFragment();
             default:
                 break;
         }
@@ -203,6 +206,7 @@ public class MainActivity extends BaseActivity implements IMain{
 
     private void initFragemntsTitleMap() {
         mTitleMap.put(R.id.zhihu, "知乎日报");
+        mTitleMap.put(R.id.bilibili, "哔哩哔哩周榜");
     }
 
     private void animateToolbar() {

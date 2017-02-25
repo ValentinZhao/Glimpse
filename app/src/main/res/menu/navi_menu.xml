@@ -12,6 +12,14 @@
             android:title="@string/navi_item_title_zhihu"
             app:itemIconTint="@color/navi_item_bg" />
 
+        <item
+            android:id="@+id/bilibili"
+            android:checkable="true"
+            android:icon="@drawable/bilibili"
+            android:title="@string/navi_item_bilibili"
+            app:itemIconTint="@color/navi_item_bg"
+            />
+
     </group>
 
     <group
