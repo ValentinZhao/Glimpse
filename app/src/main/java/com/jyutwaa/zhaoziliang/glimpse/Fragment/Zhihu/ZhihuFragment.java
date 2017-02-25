@@ -20,7 +20,7 @@ import android.view.ViewStub;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
-import com.jyutwaa.zhaoziliang.glimpse.Adapter.ZhihuAdapter;
+import com.jyutwaa.zhaoziliang.glimpse.Adapter.Zhihu.ZhihuAdapter;
 import com.jyutwaa.zhaoziliang.glimpse.Fragment.BaseFragment;
 import com.jyutwaa.zhaoziliang.glimpse.Model.Zhihu.ZhihuDaily;
 import com.jyutwaa.zhaoziliang.glimpse.Presenter.presenterImpl.IZhihuPresenterImpl;

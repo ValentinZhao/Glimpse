@@ -1,4 +1,4 @@
-package com.jyutwaa.zhaoziliang.glimpse.Adapter;
+package com.jyutwaa.zhaoziliang.glimpse.Adapter.Zhihu;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;

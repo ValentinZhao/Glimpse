@@ -16,6 +16,8 @@ public class Config {
 
     public static final String BILIBILI_VIDEO_BASE_URL = "http://www.bilibili.com/av";
 
+    public static final String[] BILIBILI_TOPLIST_TYPES = new String[]{"综合", "翻唱", "网游电竞", "综艺", "电视剧", "连载动画", "电影", "趣味科普人文", "宅舞", "鬼畜"};
+
     public static boolean isNight = false;
 
     public static String TIAN_API_KEY = "712c0d48373237c90c954d846c5bff5b";
