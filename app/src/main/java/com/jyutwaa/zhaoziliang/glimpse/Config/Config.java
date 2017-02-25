@@ -14,6 +14,8 @@ public class Config {
 
     public static final String BILIBILI = "bilibili";
 
+    public static final String BILIBILI_VIDEO_BASE_URL = "http://www.bilibili.com/av";
+
     public static boolean isNight = false;
 
     public static String TIAN_API_KEY = "712c0d48373237c90c954d846c5bff5b";

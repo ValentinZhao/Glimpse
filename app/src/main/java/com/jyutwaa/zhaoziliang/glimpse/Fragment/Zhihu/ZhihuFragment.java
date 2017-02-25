@@ -1,4 +1,4 @@
-package com.jyutwaa.zhaoziliang.glimpse.Fragment;
+package com.jyutwaa.zhaoziliang.glimpse.Fragment.Zhihu;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
@@ -21,6 +21,7 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
 import com.jyutwaa.zhaoziliang.glimpse.Adapter.ZhihuAdapter;
+import com.jyutwaa.zhaoziliang.glimpse.Fragment.BaseFragment;
 import com.jyutwaa.zhaoziliang.glimpse.Model.Zhihu.ZhihuDaily;
 import com.jyutwaa.zhaoziliang.glimpse.Presenter.presenterImpl.IZhihuPresenterImpl;
 import com.jyutwaa.zhaoziliang.glimpse.Presenter.viewImpl.IZhihuFragment;

@@ -28,7 +28,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jyutwaa.zhaoziliang.glimpse.Activity.BaseActivity;
-import com.jyutwaa.zhaoziliang.glimpse.Fragment.ZhihuFragment;
+import com.jyutwaa.zhaoziliang.glimpse.Fragment.Zhihu.ZhihuFragment;
 import com.jyutwaa.zhaoziliang.glimpse.Presenter.presenterImpl.IMainPresenterImpl;
 import com.jyutwaa.zhaoziliang.glimpse.Presenter.viewImpl.IMain;
 import com.jyutwaa.zhaoziliang.glimpse.Utils.SharedPreferenceUtils;

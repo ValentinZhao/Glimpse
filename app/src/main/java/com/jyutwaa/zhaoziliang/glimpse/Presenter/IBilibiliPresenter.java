@@ -6,5 +6,7 @@ package com.jyutwaa.zhaoziliang.glimpse.Presenter;
 
 public interface IBilibiliPresenter extends BasePresenter {
 
-    void getTopList();
+    void getIntegratedTopList();
+
+    //TODO:Add other top lists to tablayout
 }
