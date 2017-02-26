@@ -44,7 +44,7 @@ public class ZhihuFragment extends BaseFragment implements IZhihuFragment{
     private LinearLayoutManager mLinearLayoutManager;
     private RecyclerView.OnScrollListener mScrollListener;
 
-    private boolean isConnected;
+    private boolean isConnected = false;
     private boolean isLoading;
     private boolean monitoringConnectivity;
     private ConnectivityManager.NetworkCallback connectivityCallback;
@@ -132,7 +132,9 @@ public class ZhihuFragment extends BaseFragment implements IZhihuFragment{
     private void checkNetowrkAvailability() {
         ConnectivityManager manager = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo info = manager.getActiveNetworkInfo();
-        isConnected = info.isConnected() && info != null;
+        if(info != null){
+            isConnected = info.isConnected() && info != null;
+        }
         if(!isConnected && progressBar != null){
             progressBar.setVisibility(View.INVISIBLE);
             if(rl_noConnection == null){
@@ -188,6 +190,7 @@ public class ZhihuFragment extends BaseFragment implements IZhihuFragment{
      */
     @Override
     public void updateList(ZhihuDaily zhihuDaily) {
+        //parameter zhihuDaily now is data we get from API and could be transmitted to adapter
         if(isLoading){
             isLoading = false;
             mZhihuAdapter.loadingfinish();

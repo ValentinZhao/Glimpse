@@ -39,6 +39,8 @@ public class TopListTypeItem {
 
     String videoUrl;
 
+    public boolean hasFadedIn = false;
+
     public String getVideoUrl() {
         return videoUrl;
     }

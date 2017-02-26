@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rl_bilibili_item"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:foreground="@drawable/ripple_grey"
+    android:paddingTop="@dimen/item_padding"
+    android:paddingBottom="@dimen/item_padding"
+    android:stateListAnimator="@animator/raise">
+
+    <com.jyutwaa.zhaoziliang.glimpse.Widgets.BadgedFourThreeImageView
+        android:id="@+id/bilibili_item_image"
+        android:layout_width="@dimen/item_image_width"
+        android:layout_height="@dimen/item_image_height"
+        android:layout_marginTop="@dimen/item_image_vertical_margin"
+        android:layout_marginBottom="@dimen/item_image_vertical_margin"
+        android:layout_marginLeft="@dimen/item_image_horizontal_margin"
+        android:elevation="2dp"
+        android:foreground="@drawable/ripple_grey"
+        android:stateListAnimator="@animator/raise"
+        app:badgeGravity="end|bottom"
+        app:badgePadding="@dimen/item_image_padding_normal"
+        />
+
+    <TextView
+        android:id="@+id/bilibili_item_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/bilibili_item_image"
+        android:stateListAnimator="@animator/raise"
+        android:textColor="@color/text_color"
+        android:textSize="14sp"/>
+
+    <TextView
+        android:id="@+id/bilibili_item_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/bilibili_item_title"
+        android:layout_alignLeft="@id/bilibili_item_title"
+        android:maxLines="2"
+        android:layout_marginTop="10dp"
+        android:stateListAnimator="@animator/raise"
+        android:textSize="10sp"
+        android:textColor="@android:color/darker_gray"/>
+
+    <LinearLayout
+        android:id="@+id/ll_item_widgets"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bilibili_item_description"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_bilibili_item_author"
+            android:drawableStart="@drawable/author"
+            style="@style/bilibili_item_widgets"/>
+
+        <TextView
+            android:id="@+id/tv_bilibili_item_favorite"
+            android:drawableStart="@drawable/favorite"
+            style="@style/bilibili_item_widgets"/>
+
+        <TextView
+            android:id="@+id/tv_bilibili_item_comment"
+            android:drawableStart="@drawable/comment"
+            style="@style/bilibili_item_widgets"
+            />
+
+    </LinearLayout>
+
+</RelativeLayout>
