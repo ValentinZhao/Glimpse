@@ -1,31 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycle_zhihu"
+        android:id="@+id/rv_inte"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="false"
         android:elevation="1dp"
         android:paddingTop="?android:actionBarSize"
         android:scrollbarStyle="outsideOverlay"
-        android:scrollbars="vertical" />
+        android:scrollbars="vertical"/>
 
     <ProgressBar
-        android:id="@+id/progressbar_zhihu"
+        android:id="@+id/progress_inte"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:indeterminate="true"
-        android:indeterminateTint="@color/status_bar_color"
-        android:indeterminateTintMode="src_in" />
+        android:indeterminateTint="@color/immersive_bars"
+        android:indeterminateTintMode="src_in"/>
 
     <ViewStub
-        android:id="@+id/vs_no_connection"
+        android:id="@+id/vs_inte_no_connection"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout="@layout/no_connection" />
+
+
 </FrameLayout>
