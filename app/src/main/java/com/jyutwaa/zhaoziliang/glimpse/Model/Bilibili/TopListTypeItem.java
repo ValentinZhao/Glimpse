@@ -28,9 +28,6 @@ public class TopListTypeItem {
     @SerializedName("description")
     String description;
 
-    @SerializedName("create")
-    String createDate;
-
     @SerializedName("pic")
     String iconUrl;
 
@@ -103,14 +100,6 @@ public class TopListTypeItem {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public String getCreateDate() {
-        return createDate;
-    }
-
-    public void setCreateDate(String createDate) {
-        this.createDate = createDate;
     }
 
     public String getIconUrl() {

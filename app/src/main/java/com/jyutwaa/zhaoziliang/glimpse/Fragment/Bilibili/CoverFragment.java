@@ -8,14 +8,14 @@ import android.view.ViewGroup;
 
 import com.jyutwaa.zhaoziliang.glimpse.Fragment.BaseFragment;
 import com.jyutwaa.zhaoziliang.glimpse.Model.Bilibili.TopListType;
-import com.jyutwaa.zhaoziliang.glimpse.Presenter.viewImpl.IBilibiliFragment;
+import com.jyutwaa.zhaoziliang.glimpse.Presenter.viewImpl.IBilibiliIntegratedFragment;
 import com.jyutwaa.zhaoziliang.glimpse.R;
 
 /**
  * Created by zhaoziliang on 17/2/25.
  */
 
-public class CoverFragment extends BaseFragment implements IBilibiliFragment {
+public class CoverFragment extends BaseFragment implements IBilibiliIntegratedFragment {
     View mView;
 
     @Nullable

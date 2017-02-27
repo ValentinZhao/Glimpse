@@ -24,7 +24,7 @@ import com.jyutwaa.zhaoziliang.glimpse.Adapter.Bilibili.IntegratedAdapter;
 import com.jyutwaa.zhaoziliang.glimpse.Fragment.BaseFragment;
 import com.jyutwaa.zhaoziliang.glimpse.Model.Bilibili.TopListType;
 import com.jyutwaa.zhaoziliang.glimpse.Presenter.presenterImpl.IBilibiliPresenterImpl;
-import com.jyutwaa.zhaoziliang.glimpse.Presenter.viewImpl.IBilibiliFragment;
+import com.jyutwaa.zhaoziliang.glimpse.Presenter.viewImpl.IBilibiliIntegratedFragment;
 import com.jyutwaa.zhaoziliang.glimpse.R;
 import com.jyutwaa.zhaoziliang.glimpse.View.GridItemDividerDecoration;
 
@@ -32,7 +32,7 @@ import com.jyutwaa.zhaoziliang.glimpse.View.GridItemDividerDecoration;
  * Created by zhaoziliang on 17/2/25.
  */
 
-public class IntegratedFragment extends BaseFragment implements IBilibiliFragment {
+public class IntegratedFragment extends BaseFragment implements IBilibiliIntegratedFragment {
 
     View mView;
     private IBilibiliPresenterImpl mIBilibiliPresenterImpl;
@@ -81,7 +81,7 @@ public class IntegratedFragment extends BaseFragment implements IBilibiliFragmen
     @Override
     public void updateList(TopListType topListType) {
         if(topListType != null){
-            mIntegratedAdapter.addItems(topListType.getIntegrated_list());
+            mIntegratedAdapter.addItems(topListType.getIntegrated_list().getAllItems());
         }
     }
 
