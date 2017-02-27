@@ -109,6 +109,18 @@ public class IntegratedAdapter extends RecyclerView.Adapter {
                 Toast.makeText(mContext, "进入视频详情页", Toast.LENGTH_SHORT).show();
             }
         });
+        holder.itemTitle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(mContext, "进入视频详情页", Toast.LENGTH_SHORT).show();
+            }
+        });
+        holder.itemComment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(mContext, "进入评论区", Toast.LENGTH_SHORT).show();
+            }
+        });
         holder.itemTitle.setText(item.getTitle());
         holder.itemDescription.setText(item.getDescription());
         holder.itemAuthor.setText(item.getAuthor());
