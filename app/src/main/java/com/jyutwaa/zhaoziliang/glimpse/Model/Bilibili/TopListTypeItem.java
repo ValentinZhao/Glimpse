@@ -17,10 +17,10 @@ public class TopListTypeItem {
     String title;
 
     @SerializedName("play")
-    int playCount;
+    String playCount;
 
     @SerializedName("favorites")
-    int favoritesCount;
+    String favoritesCount;
 
     @SerializedName("author")
     String author;
@@ -32,19 +32,11 @@ public class TopListTypeItem {
     String iconUrl;
 
     @SerializedName("comment")
-    int commentCount;
+    String commentCount;
 
     String videoUrl;
 
     public boolean hasFadedIn = false;
-
-    public String getVideoUrl() {
-        return videoUrl;
-    }
-
-    public void setVideoUrl(String videoUrl) {
-        this.videoUrl = videoUrl;
-    }
 
     public String getAid() {
         return aid;
@@ -70,19 +62,19 @@ public class TopListTypeItem {
         this.title = title;
     }
 
-    public int getPlayCount() {
+    public String getPlayCount() {
         return playCount;
     }
 
-    public void setPlayCount(int playCount) {
+    public void setPlayCount(String playCount) {
         this.playCount = playCount;
     }
 
-    public int getFavoritesCount() {
+    public String getFavoritesCount() {
         return favoritesCount;
     }
 
-    public void setFavoritesCount(int favoritesCount) {
+    public void setFavoritesCount(String favoritesCount) {
         this.favoritesCount = favoritesCount;
     }
 
@@ -110,11 +102,19 @@ public class TopListTypeItem {
         this.iconUrl = iconUrl;
     }
 
-    public int getCommentCount() {
+    public String getCommentCount() {
         return commentCount;
     }
 
-    public void setCommentCount(int commentCount) {
+    public void setCommentCount(String commentCount) {
         this.commentCount = commentCount;
+    }
+
+    public String getVideoUrl() {
+        return videoUrl;
+    }
+
+    public void setVideoUrl(String videoUrl) {
+        this.videoUrl = videoUrl;
     }
 }

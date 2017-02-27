@@ -5,7 +5,6 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.content.Context;
-import android.graphics.Color;
 import android.graphics.ColorMatrixColorFilter;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -20,10 +19,8 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
-import com.jyutwaa.zhaoziliang.glimpse.Config.Config;
 import com.jyutwaa.zhaoziliang.glimpse.Model.Bilibili.TopListTypeItem;
 import com.jyutwaa.zhaoziliang.glimpse.R;
-import com.jyutwaa.zhaoziliang.glimpse.Utils.DBUtils;
 import com.jyutwaa.zhaoziliang.glimpse.Utils.ViewUtils;
 import com.jyutwaa.zhaoziliang.glimpse.Widgets.BadgedFourThreeImageView;
 import com.jyutwaa.zhaoziliang.glimpse.Widgets.DribbbleTarget;
@@ -101,11 +98,11 @@ public class IntegratedAdapter extends RecyclerView.Adapter {
     private void bindNormalViewHolder(final NormalViewHolder holder, int position) {
         final TopListTypeItem item = mTopListTypeItems.get(holder.getAdapterPosition());
         videoUrl = item.getVideoUrl();
-        if(DBUtils.getDB(mContext).isRead(Config.BILIBILI, item.getAid(), 1)){
-            holder.itemTitle.setTextColor(Color.GRAY);
-        } else {
-            holder.itemTitle.setTextColor(Color.BLACK);
-        }
+//        if(DBUtils.getDB(mContext).isRead(Config.BILIBILI, item.getAid(), 1)){
+//            holder.itemTitle.setTextColor(Color.GRAY);
+//        } else {
+//            holder.itemTitle.setTextColor(Color.BLACK);
+//        }
         holder.itemImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

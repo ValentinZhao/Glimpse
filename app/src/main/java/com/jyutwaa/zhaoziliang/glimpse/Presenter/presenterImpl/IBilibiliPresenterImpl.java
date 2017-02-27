@@ -1,7 +1,7 @@
 package com.jyutwaa.zhaoziliang.glimpse.Presenter.presenterImpl;
 
 import android.content.Context;
-import android.widget.Toast;
+import android.util.Log;
 
 import com.jyutwaa.zhaoziliang.glimpse.Api.ApiManager;
 import com.jyutwaa.zhaoziliang.glimpse.Config.Config;
@@ -42,7 +42,7 @@ public class IBilibiliPresenterImpl extends BasePresenterImpl implements IBilibi
                     public TopListType call(TopListType topListType) {
                         for(TopListTypeItem item : topListType.getIntegrated_list().getAllItems()){
                             item.setVideoUrl(Config.BILIBILI_VIDEO_BASE_URL + item.getAid());
-                            Toast.makeText(mContext, "onError()!", Toast.LENGTH_SHORT).show();
+                            Log.d("BILIBILI", Config.BILIBILI_VIDEO_BASE_URL + item.getAid());
                         }
                         return topListType;
                     }
@@ -53,7 +53,6 @@ public class IBilibiliPresenterImpl extends BasePresenterImpl implements IBilibi
 
                     @Override
                     public void onError(Throwable e) {
-                        Toast.makeText(mContext, "onError()!", Toast.LENGTH_SHORT).show();
                         e.printStackTrace();
                         mIBlibiliFragment.hideProgressbar();
                         mIBlibiliFragment.showError(e.getMessage());
@@ -61,7 +60,6 @@ public class IBilibiliPresenterImpl extends BasePresenterImpl implements IBilibi
 
                     @Override
                     public void onNext(TopListType topListType) {
-                        Toast.makeText(mContext, "onNext()!", Toast.LENGTH_SHORT).show();
                         mIBlibiliFragment.hideProgressbar();
                         mIBlibiliFragment.updateList(topListType);
                     }

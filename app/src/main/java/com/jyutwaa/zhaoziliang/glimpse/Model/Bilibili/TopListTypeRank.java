@@ -37,7 +37,7 @@ public class TopListTypeRank {
     @SerializedName("8")
     TopListTypeItem top9;
 
-    ArrayList<TopListTypeItem> mTopListItems;
+    ArrayList<TopListTypeItem> mTopListItems = new ArrayList<>();
 
     public ArrayList<TopListTypeItem> getAllItems(){
         mTopListItems.add(top1);
