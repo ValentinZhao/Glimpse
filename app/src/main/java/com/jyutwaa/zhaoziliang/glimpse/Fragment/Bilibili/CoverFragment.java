@@ -111,11 +111,11 @@ public class CoverFragment extends BaseFragment implements IBilibiliIntegratedFr
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
                 if(dy > 0){
-                    int viewItemsCount = mLinearLayoutManager.getChildCount();
-                    int pastItemCount = mLinearLayoutManager.findFirstVisibleItemPosition();
+                    int viewItemCount = mLinearLayoutManager.getChildCount();
                     int totalItemCount = mLinearLayoutManager.getItemCount();
+                    int pastItemCount = mLinearLayoutManager.findFirstVisibleItemPosition();
 
-                    if(viewItemsCount + pastItemCount > totalItemCount){
+                    if(viewItemCount + pastItemCount >= totalItemCount){
                         Snackbar.make(mView, "没有更多啦(～￣▽￣)～", Snackbar.LENGTH_SHORT).show();
                     }
                 }
