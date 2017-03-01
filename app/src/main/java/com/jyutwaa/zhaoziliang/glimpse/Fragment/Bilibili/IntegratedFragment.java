@@ -60,6 +60,7 @@ public class IntegratedFragment extends BaseFragment implements IBilibiliIntegra
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        //TODO:Use savedInstanceState to cache the view, for loading views we had loaded without network
         super.onViewCreated(view, savedInstanceState);
         initListeners();
         checkNetworkConnectivity();
