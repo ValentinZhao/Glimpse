@@ -5,10 +5,10 @@ import android.util.Log;
 
 import com.jyutwaa.zhaoziliang.glimpse.Api.ApiManager;
 import com.jyutwaa.zhaoziliang.glimpse.Config.Config;
+import com.jyutwaa.zhaoziliang.glimpse.Fragment.Bilibili.CoverFragment;
 import com.jyutwaa.zhaoziliang.glimpse.Model.Bilibili.TopListType;
 import com.jyutwaa.zhaoziliang.glimpse.Model.Bilibili.TopListTypeItem;
-import com.jyutwaa.zhaoziliang.glimpse.Presenter.IBilibiliPresenter;
-import com.jyutwaa.zhaoziliang.glimpse.Presenter.viewImpl.IBilibiliIntegratedFragment;
+import com.jyutwaa.zhaoziliang.glimpse.Presenter.IBilibiliCoverPresenter;
 import com.jyutwaa.zhaoziliang.glimpse.Utils.CacheUtil;
 
 import rx.Observer;
@@ -18,29 +18,29 @@ import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
 /**
- * Created by zhaoziliang on 17/2/24.
+ * Created by zhaoziliang on 17/2/28.
  */
 
-public class IBilibiliPresenterImpl extends BasePresenterImpl implements IBilibiliPresenter{
+public class IBilibiliCoverPresenterImpl extends BasePresenterImpl implements IBilibiliCoverPresenter{
 
-    IBilibiliIntegratedFragment mIBlibiliFragment;
     Context mContext;
+    CoverFragment mIBilibiliCoverFragment;
     CacheUtil mCacheUtils;
-    public IBilibiliPresenterImpl(Context context, IBilibiliIntegratedFragment mIBlibiliFragment) {
-        mContext = context;
-        this.mIBlibiliFragment = mIBlibiliFragment;
-        mCacheUtils = CacheUtil.get(context);
+    public IBilibiliCoverPresenterImpl(Context mContext, CoverFragment mIBilibiliCoverFragment) {
+        this.mContext = mContext;
+        this.mIBilibiliCoverFragment = mIBilibiliCoverFragment;
+        this.mCacheUtils = CacheUtil.get(mContext);
     }
 
     @Override
-    public void getIntegratedTopList() {
+    public void getCoverTopList() {
         Subscription subscription = ApiManager.getInstance().getBilibiliApiService().getTopList()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .map(new Func1<TopListType, TopListType>() {
                     @Override
                     public TopListType call(TopListType topListType) {
-                        for(TopListTypeItem item : topListType.getIntegrated_list().getAllItems()){
+                        for(TopListTypeItem item : topListType.getCover_list().getAllItems()){
                             item.setVideoUrl(Config.BILIBILI_VIDEO_BASE_URL + item.getAid());
                             Log.d("BILIBILI", Config.BILIBILI_VIDEO_BASE_URL + item.getAid());
                         }
@@ -49,22 +49,21 @@ public class IBilibiliPresenterImpl extends BasePresenterImpl implements IBilibi
                 }).subscribe(new Observer<TopListType>() {
                     @Override
                     public void onCompleted() {
+
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        e.printStackTrace();
-                        mIBlibiliFragment.hideProgressbar();
-                        mIBlibiliFragment.showError(e.getMessage());
+                        mIBilibiliCoverFragment.hideProgressbar();
+                        mIBilibiliCoverFragment.showError(e.getMessage());
                     }
 
                     @Override
                     public void onNext(TopListType topListType) {
-                        mIBlibiliFragment.hideProgressbar();
-                        mIBlibiliFragment.updateList(topListType);
+                        mIBilibiliCoverFragment.hideProgressbar();
+                        mIBilibiliCoverFragment.updateList(topListType);
                     }
                 });
         addSubscription(subscription);
     }
-
 }

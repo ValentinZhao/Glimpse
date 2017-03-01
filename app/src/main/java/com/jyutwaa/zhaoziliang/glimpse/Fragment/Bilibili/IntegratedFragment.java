@@ -23,7 +23,7 @@ import android.widget.RelativeLayout;
 import com.jyutwaa.zhaoziliang.glimpse.Adapter.Bilibili.IntegratedAdapter;
 import com.jyutwaa.zhaoziliang.glimpse.Fragment.BaseFragment;
 import com.jyutwaa.zhaoziliang.glimpse.Model.Bilibili.TopListType;
-import com.jyutwaa.zhaoziliang.glimpse.Presenter.presenterImpl.IBilibiliPresenterImpl;
+import com.jyutwaa.zhaoziliang.glimpse.Presenter.presenterImpl.IBilibiliIntegratedPresenterImpl;
 import com.jyutwaa.zhaoziliang.glimpse.Presenter.viewImpl.IBilibiliIntegratedFragment;
 import com.jyutwaa.zhaoziliang.glimpse.R;
 import com.jyutwaa.zhaoziliang.glimpse.View.GridItemDividerDecoration;
@@ -35,7 +35,7 @@ import com.jyutwaa.zhaoziliang.glimpse.View.GridItemDividerDecoration;
 public class IntegratedFragment extends BaseFragment implements IBilibiliIntegratedFragment {
 
     View mView;
-    private IBilibiliPresenterImpl mIBilibiliPresenterImpl;
+    private IBilibiliIntegratedPresenterImpl mIBilibiliPresenterImpl;
     private LinearLayoutManager mLinearLayoutManager;
     private RecyclerView.OnScrollListener mScrollListener;
     private IntegratedAdapter mIntegratedAdapter;
@@ -166,7 +166,7 @@ public class IntegratedFragment extends BaseFragment implements IBilibiliIntegra
 
     private void initViewsAndLaunch() {
         mIntegratedAdapter = new IntegratedAdapter(getContext());
-        mIBilibiliPresenterImpl = new IBilibiliPresenterImpl(getContext(), this);
+        mIBilibiliPresenterImpl = new IBilibiliIntegratedPresenterImpl(getContext(), this);
         mLinearLayoutManager = new LinearLayoutManager(getContext());
         rv_content.setLayoutManager(mLinearLayoutManager);
         rv_content.setHasFixedSize(true);
