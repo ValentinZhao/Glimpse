@@ -1,6 +1,7 @@
 package com.jyutwaa.zhaoziliang.glimpse.Presenter.presenterImpl;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.jyutwaa.zhaoziliang.glimpse.Api.ApiManager;
 import com.jyutwaa.zhaoziliang.glimpse.Config.Config;
@@ -8,6 +9,7 @@ import com.jyutwaa.zhaoziliang.glimpse.Model.Bilibili.TopListType;
 import com.jyutwaa.zhaoziliang.glimpse.Model.Bilibili.TopListTypeItem;
 import com.jyutwaa.zhaoziliang.glimpse.Presenter.IBilibiliEsportPresenter;
 import com.jyutwaa.zhaoziliang.glimpse.Presenter.viewImpl.IBilibiliEsportFragment;
+import com.jyutwaa.zhaoziliang.glimpse.Utils.CacheUtil;
 
 import rx.Observer;
 import rx.Subscription;
@@ -23,10 +25,12 @@ public class IBilibiliEsportPresenterImpl extends BasePresenterImpl implements I
 
     Context mContext;
     IBilibiliEsportFragment mIBilibiliEsportFragment;
+    CacheUtil mCacheUtils;
 
     public IBilibiliEsportPresenterImpl(Context mContext, IBilibiliEsportFragment mIBilibiliEsportFragment) {
         this.mContext = mContext;
         this.mIBilibiliEsportFragment = mIBilibiliEsportFragment;
+        this.mCacheUtils = CacheUtil.get(mContext);
     }
 
     @Override
@@ -39,6 +43,7 @@ public class IBilibiliEsportPresenterImpl extends BasePresenterImpl implements I
                     public TopListType call(TopListType topListType) {
                         for(TopListTypeItem item : topListType.getEsport_list().getAllItems()){
                             item.setVideoUrl(Config.BILIBILI_VIDEO_BASE_URL + item.getAid());
+                            Log.d("BILIBILI", Config.BILIBILI_VIDEO_BASE_URL + item.getAid());
                         }
                         return topListType;
                     }

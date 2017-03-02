@@ -57,9 +57,9 @@ public class BaseBilibiliFragmentAdapter extends RecyclerView.Adapter {
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         switch (viewType){
             case TYPE_NORMAL:
-                return new IntegratedAdapter.NormalViewHolder(View.inflate(mContext, R.layout.bilibili_item_layout, null));
+                return new BaseBilibiliFragmentAdapter.NormalViewHolder(View.inflate(mContext, R.layout.bilibili_item_layout, null));
             case TYPE_LOADING:
-                return new IntegratedAdapter.LoadingViewHolder(View.inflate(mContext, R.layout.loading_more_layout, null));
+                return new BaseBilibiliFragmentAdapter.LoadingViewHolder(View.inflate(mContext, R.layout.loading_more_layout, null));
             default:
                 break;
         }
@@ -71,10 +71,10 @@ public class BaseBilibiliFragmentAdapter extends RecyclerView.Adapter {
         int viewType = holder.getItemViewType();
         switch (viewType){
             case TYPE_NORMAL:
-                bindNormalViewHolder((IntegratedAdapter.NormalViewHolder) holder, position);
+                bindNormalViewHolder((BaseBilibiliFragmentAdapter.NormalViewHolder) holder, position);
                 break;
             case TYPE_LOADING:
-                bindLoadingViewHolder((IntegratedAdapter.LoadingViewHolder) holder, position);
+                bindLoadingViewHolder((BaseBilibiliFragmentAdapter.LoadingViewHolder) holder, position);
                 break;
             default:
                 break;
@@ -95,7 +95,7 @@ public class BaseBilibiliFragmentAdapter extends RecyclerView.Adapter {
         }
     }
 
-    private void bindNormalViewHolder(final IntegratedAdapter.NormalViewHolder holder, int position) {
+    private void bindNormalViewHolder(final BaseBilibiliFragmentAdapter.NormalViewHolder holder, int position) {
         final TopListTypeItem item = mTopListTypeItems.get(holder.getAdapterPosition());
         videoUrl = item.getVideoUrl();
 //        if(DBUtils.getDB(mContext).isRead(Config.BILIBILI, item.getAid(), 1)){
@@ -168,7 +168,7 @@ public class BaseBilibiliFragmentAdapter extends RecyclerView.Adapter {
                 .into(new DribbbleTarget(holder.itemImage, false));
     }
 
-    private void bindLoadingViewHolder(IntegratedAdapter.LoadingViewHolder holder, int position) {
+    private void bindLoadingViewHolder(BaseBilibiliFragmentAdapter.LoadingViewHolder holder, int position) {
         holder.progressBar.setVisibility(View.VISIBLE);
     }
 

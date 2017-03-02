@@ -14,7 +14,7 @@ import android.view.ViewStub;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
-import com.jyutwaa.zhaoziliang.glimpse.Adapter.Bilibili.CoverAdapter;
+import com.jyutwaa.zhaoziliang.glimpse.Adapter.Bilibili.BaseBilibiliFragmentAdapter;
 import com.jyutwaa.zhaoziliang.glimpse.Fragment.BaseFragment;
 import com.jyutwaa.zhaoziliang.glimpse.Model.Bilibili.TopListType;
 import com.jyutwaa.zhaoziliang.glimpse.Presenter.presenterImpl.IBilibiliCoverPresenterImpl;
@@ -31,7 +31,7 @@ public class CoverFragment extends BaseFragment implements IBilibiliIntegratedFr
     IBilibiliCoverPresenterImpl mIBilibiliCoverPresenterImpl;
     LinearLayoutManager mLinearLayoutManager;
     RecyclerView.OnScrollListener mScrollListener;
-    CoverAdapter mAdapter;
+    BaseBilibiliFragmentAdapter mAdapter;
 
 
     RecyclerView rv_content;
@@ -78,7 +78,7 @@ public class CoverFragment extends BaseFragment implements IBilibiliIntegratedFr
     private void initViewsAndLaunch() {
         mIBilibiliCoverPresenterImpl = new IBilibiliCoverPresenterImpl(getContext(), this);
         mLinearLayoutManager = new LinearLayoutManager(getContext());
-        mAdapter = new CoverAdapter(getContext());
+        mAdapter = new BaseBilibiliFragmentAdapter(getContext());
         rv_content.setLayoutManager(mLinearLayoutManager);
         rv_content.setHasFixedSize(true);
         rv_content.addOnScrollListener(mScrollListener);
