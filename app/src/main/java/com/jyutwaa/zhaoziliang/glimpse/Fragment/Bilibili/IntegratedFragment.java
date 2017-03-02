@@ -13,9 +13,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.ViewStub;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -50,13 +48,6 @@ public class IntegratedFragment extends BaseFragment implements IBilibiliIntegra
     private boolean isConnected = false;
     private boolean monitoringConnectivity;
 
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        mView = inflater.inflate(R.layout.fragment_bilibili_integrated, null);
-        initWidgets();
-        return mView;
-    }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -78,6 +69,7 @@ public class IntegratedFragment extends BaseFragment implements IBilibiliIntegra
             monitoringConnectivity = false;
         }
     }
+
 
     @Override
     public void updateList(TopListType topListType) {
@@ -105,7 +97,13 @@ public class IntegratedFragment extends BaseFragment implements IBilibiliIntegra
         }
     }
 
-    private void initWidgets() {
+    @Override
+    protected int getLayoutIdentifier() {
+        return R.layout.fragment_bilibili_integrated;
+    }
+
+    @Override
+    protected void initWidgets() {
         rv_content = (RecyclerView) mView.findViewById(R.id.rv_inte);
         mProgressBar = (ProgressBar) mView.findViewById(R.id.progress_inte);
         vs_no_connection = (ViewStub) mView.findViewById(R.id.vs_inte_no_connection);

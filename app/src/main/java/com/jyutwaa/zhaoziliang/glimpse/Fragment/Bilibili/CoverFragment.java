@@ -9,9 +9,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.ViewStub;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -43,14 +41,6 @@ public class CoverFragment extends BaseFragment implements IBilibiliIntegratedFr
     RelativeLayout rl_no_connection;
 
     boolean isConnected = false;
-
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        mView = inflater.inflate(R.layout.fragment_bilibili_cover, null);
-        initWidgets();
-        return mView;
-    }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -136,7 +126,13 @@ public class CoverFragment extends BaseFragment implements IBilibiliIntegratedFr
         }
     }
 
-    private void initWidgets() {
+    @Override
+    protected int getLayoutIdentifier() {
+        return R.layout.fragment_bilibili_cover;
+    }
+
+    @Override
+    protected void initWidgets() {
         rv_content = (RecyclerView) mView.findViewById(R.id.rv_cover);
         mProgressBar = (ProgressBar) mView.findViewById(R.id.progress_cover);
         vs_no_connection = (ViewStub) mView.findViewById(R.id.vs_cover_no_connection);

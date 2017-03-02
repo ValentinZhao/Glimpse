@@ -37,6 +37,7 @@ public class ZhihuFragment extends BaseFragment implements IZhihuFragment{
     private IZhihuPresenterImpl mIZhihuPresenterImpl;
     private ZhihuAdapter mZhihuAdapter;
 
+
     private RecyclerView recyclerView;
     private ProgressBar progressBar;
     private ViewStub vs_noConnection;
@@ -54,9 +55,9 @@ public class ZhihuFragment extends BaseFragment implements IZhihuFragment{
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         setRetainInstance(true);
-        View view = inflater.inflate(R.layout.fragment_zhihu, container, false);
-        initWidgets(view);
-        return view;
+        mView = inflater.inflate(R.layout.fragment_zhihu, container, false);
+        initWidgets();
+        return mView;
     }
 
     private void initListeners() {
@@ -148,10 +149,16 @@ public class ZhihuFragment extends BaseFragment implements IZhihuFragment{
         }
     }
 
-    private void initWidgets(View view) {
-        recyclerView = (RecyclerView) view.findViewById(R.id.recycle_zhihu);
-        progressBar = (ProgressBar) view.findViewById(R.id.progressbar_zhihu);
-        vs_noConnection = (ViewStub) view.findViewById(R.id.vs_no_connection);
+    @Override
+    protected int getLayoutIdentifier() {
+        return R.layout.fragment_zhihu;
+    }
+
+    @Override
+    protected void initWidgets() {
+        recyclerView = (RecyclerView) mView.findViewById(R.id.recycle_zhihu);
+        progressBar = (ProgressBar) mView.findViewById(R.id.progressbar_zhihu);
+        vs_noConnection = (ViewStub) mView.findViewById(R.id.vs_no_connection);
     }
 
     @Override

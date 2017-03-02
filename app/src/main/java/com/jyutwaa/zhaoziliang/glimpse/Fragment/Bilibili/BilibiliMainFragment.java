@@ -8,9 +8,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.jyutwaa.zhaoziliang.glimpse.Adapter.Bilibili.BilibiliMainViewPagerAdapter;
 import com.jyutwaa.zhaoziliang.glimpse.Config.Config;
@@ -26,7 +24,6 @@ import java.util.List;
 
 public class BilibiliMainFragment extends BaseFragment{
 
-    public View mView;
     public Activity mActivity;
     public Context mContext;
 
@@ -43,12 +40,6 @@ public class BilibiliMainFragment extends BaseFragment{
         super.onAttach(context);
     }
 
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        mView = inflater.inflate(R.layout.fragment_bilibili, null);
-        return mView;
-    }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -92,5 +83,14 @@ public class BilibiliMainFragment extends BaseFragment{
         for(int i = 0; i < 10; i++){
             mTabLayout.getTabAt(i).setText(Config.BILIBILI_TOPLIST_TYPES[i]);
         }
+    }
+
+    @Override
+    protected int getLayoutIdentifier() {
+        return R.layout.fragment_bilibili;
+    }
+
+    @Override
+    protected void initWidgets() {
     }
 }
