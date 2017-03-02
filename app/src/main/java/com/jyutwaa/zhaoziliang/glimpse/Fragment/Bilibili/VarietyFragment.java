@@ -17,8 +17,7 @@ import android.widget.RelativeLayout;
 import com.jyutwaa.zhaoziliang.glimpse.Adapter.Bilibili.BaseBilibiliFragmentAdapter;
 import com.jyutwaa.zhaoziliang.glimpse.Fragment.BaseFragment;
 import com.jyutwaa.zhaoziliang.glimpse.Model.Bilibili.TopListType;
-import com.jyutwaa.zhaoziliang.glimpse.Presenter.presenterImpl.IBilibiliEsportPresenterImpl;
-import com.jyutwaa.zhaoziliang.glimpse.Presenter.viewImpl.IBilibiliIntegratedFragment;
+import com.jyutwaa.zhaoziliang.glimpse.Presenter.presenterImpl.IBilibiliVarietyPresenterImpl;
 import com.jyutwaa.zhaoziliang.glimpse.Presenter.viewImpl.IBilibiliVarietyFragment;
 import com.jyutwaa.zhaoziliang.glimpse.R;
 import com.jyutwaa.zhaoziliang.glimpse.View.GridItemDividerDecoration;
@@ -33,6 +32,7 @@ public class VarietyFragment extends BaseFragment implements IBilibiliVarietyFra
     LinearLayoutManager mLinearLayoutManager;
     RecyclerView.OnScrollListener mScrollListener;
     BaseBilibiliFragmentAdapter mAdapter;
+    IBilibiliVarietyPresenterImpl mIBilibiliVarietyPresenterImpl;
 
 
     RecyclerView rv_content;
@@ -53,7 +53,7 @@ public class VarietyFragment extends BaseFragment implements IBilibiliVarietyFra
     @Override
     public void updateList(TopListType topListType) {
         if(topListType != null){
-            mAdapter.addItems(topListType.getEsport_list().getAllItems());
+            mAdapter.addItems(topListType.getVariety_list().getAllItems());
         }
     }
 
@@ -77,7 +77,7 @@ public class VarietyFragment extends BaseFragment implements IBilibiliVarietyFra
     }
 
     private void initViewsAndLaunch() {
-        mIBilibiliEsportPresenterImpl = new IBilibiliEsportPresenterImpl(getContext(), this);
+        mIBilibiliVarietyPresenterImpl = new IBilibiliVarietyPresenterImpl(getContext(), this);
         mLinearLayoutManager = new LinearLayoutManager(getContext());
         mAdapter = new BaseBilibiliFragmentAdapter(getContext());
         rv_content.setLayoutManager(mLinearLayoutManager);
@@ -142,6 +142,6 @@ public class VarietyFragment extends BaseFragment implements IBilibiliVarietyFra
         if(mAdapter.getItemCount() > 0){
             mAdapter.clearData();
         }
-        mIBilibiliEsportPresenterImpl.getEsportTopList();
+        mIBilibiliVarietyPresenterImpl.getVarietyTopList();
     }
 }
