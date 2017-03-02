@@ -1,11 +1,5 @@
 package com.jyutwaa.zhaoziliang.glimpse.Fragment.Bilibili;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
 import com.jyutwaa.zhaoziliang.glimpse.Fragment.BaseFragment;
 import com.jyutwaa.zhaoziliang.glimpse.Model.Bilibili.TopListType;
 import com.jyutwaa.zhaoziliang.glimpse.Presenter.viewImpl.IBilibiliIntegratedFragment;
@@ -16,13 +10,15 @@ import com.jyutwaa.zhaoziliang.glimpse.R;
  */
 
 public class SerialFragment extends BaseFragment implements IBilibiliIntegratedFragment {
-    View mView;
 
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        mView = inflater.inflate(R.layout.fragment_bilibili_serial, null);
-        return mView;
+    protected int getLayoutIdentifier() {
+        return R.layout.fragment_bilibili_serial;
+    }
+
+    @Override
+    protected void initWidgets() {
+
     }
 
     @Override

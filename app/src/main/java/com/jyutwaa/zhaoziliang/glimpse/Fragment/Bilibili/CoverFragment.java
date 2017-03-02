@@ -28,7 +28,6 @@ import com.jyutwaa.zhaoziliang.glimpse.View.GridItemDividerDecoration;
 
 public class CoverFragment extends BaseFragment implements IBilibiliIntegratedFragment {
 
-    View mView;
     IBilibiliCoverPresenterImpl mIBilibiliCoverPresenterImpl;
     LinearLayoutManager mLinearLayoutManager;
     RecyclerView.OnScrollListener mScrollListener;
