@@ -34,6 +34,7 @@ public abstract class BaseFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         mFragmentManager = getFragmentManager();
         mFragmentTransaction = mFragmentManager.beginTransaction();
+        mFragmentTransaction.commit();
     }
 
     @Override
@@ -46,7 +47,6 @@ public abstract class BaseFragment extends Fragment {
     public void onResume() {
         super.onResume();
         mFragmentTransaction.show(this);
-        mFragmentTransaction.commit();
     }
 
     protected abstract int getLayoutIdentifier();
