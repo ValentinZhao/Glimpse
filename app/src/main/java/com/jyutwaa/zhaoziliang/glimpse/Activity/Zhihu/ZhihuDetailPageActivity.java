@@ -1,4 +1,4 @@
-package com.jyutwaa.zhaoziliang.glimpse.Activity;
+package com.jyutwaa.zhaoziliang.glimpse.Activity.Zhihu;
 
 import android.animation.ValueAnimator;
 import android.graphics.Bitmap;
@@ -25,6 +25,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
+import com.jyutwaa.zhaoziliang.glimpse.Activity.BaseDetailPageActivity;
 import com.jyutwaa.zhaoziliang.glimpse.Config.Config;
 import com.jyutwaa.zhaoziliang.glimpse.Model.Zhihu.ZhihuDetailPage;
 import com.jyutwaa.zhaoziliang.glimpse.Presenter.presenterImpl.IZhihuDetailPagePresenterImpl;

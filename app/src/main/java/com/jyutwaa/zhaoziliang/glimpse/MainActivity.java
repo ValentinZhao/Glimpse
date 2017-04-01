@@ -311,6 +311,11 @@ public class MainActivity extends BaseActivity implements IMain{
         }
     }
 
+    /**
+     * 此方法用于初始化菜单，其中menu参数就是即将要显示的Menu实例。 返回true则显示该menu,false 则不显示;
+     * (只会在第一次初始化菜单时调用) Inflate the menu; this adds items to the action bar
+     * if it is present.
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
