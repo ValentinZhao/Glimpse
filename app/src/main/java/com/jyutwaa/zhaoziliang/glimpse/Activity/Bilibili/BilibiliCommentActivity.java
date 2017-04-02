@@ -7,4 +7,5 @@ import com.jyutwaa.zhaoziliang.glimpse.Activity.BaseDetailPageActivity;
  */
 
 public class BilibiliCommentActivity extends BaseDetailPageActivity {
+
 }
