@@ -1,0 +1,226 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>HTML EXERCISE</title>
+		<meta charset="utf-8">
+		<meta name="description" content="HTML练习"> 
+		
+	<style>
+		.dropbtn {
+			background-color: #4CAF50;
+			color: white;
+			padding: 16px;
+			font-size: 16px;
+			border: none;
+			cursor: pointer;
+		}
+
+		.dropdown {
+			position: relative;
+			display: inline-block;
+			padding-top: 100px;
+		}
+
+		.dropdown-content {
+			display: none;
+			position: absolute;
+			background-color: #f9f9f9;
+			min-width: 160px;
+			box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+		}
+
+		.dropdown-content a {
+			color: black;
+			padding: 12px 16px;
+			text-decoration: none;
+			display: block;
+		}
+
+		.dropdown-content a:hover {background-color: #f1f1f1}
+
+		.dropdown:hover .dropdown-content {
+			display: block;
+		}
+
+		.dropdown:hover .dropbtn {
+			background-color: #3e8e41;
+		}
+	</style>
+	</head>
+	<body>
+		<h1 
+		style="background-color: yellow;font-family: verdana;text-align: center;">Hello world!</h1>
+		<a 
+		href="http://www.baidu.com">百度</a>
+		<table border="1" style="margin-top: 20px">
+			<tr>
+				<th>Name</th>
+				<th>Address</th>
+				<th>Tel</th>
+			</tr>
+			<tr>
+				<td>Jason</td>
+				<td>Washington</td>
+				<td>347-9269</td>
+			</tr>
+			<tr>
+				<td>Valentin</td>
+				<td>Shenzhen</td>
+				<td>299-2264</td>
+			</tr><tr>
+				<td>Timberland</td>
+				<td>Chicago</td>
+				<td>939-7736</td>
+			</tr>
+		</table>
+		<p>这是两段列表</p>
+		<table border="0">
+			<tr>
+				<td>
+					<ul>
+						<li>Coffee</li>
+						<li>Soda</li>
+						<li>Tea</li>
+					</ul>
+				</td>
+				<td>
+					<ol>
+						<li>Chips</li>
+						<li>Cookies</li>
+						<li>Nougats</li>
+					</ol>
+				</td>
+			</tr>
+		</table>
+		<div>
+			<form>
+				用户名：<input type="text" name="user_name">
+				加密：<keygen type="security">
+				<input type="submit">
+			</form><br>
+			<form>
+				<input list="browsers" name="browsers">
+				<datalist id="browsers">
+					<option value="Internet Explorer">
+					<option value="Chrome">
+					<option value="Safari">
+					<option value="Opera">
+					<option value="Firefox">
+				</datalist>
+				<input type="submit" value="SUBMIT">
+			</form>
+		</div>
+		<div>
+			<p><button onclick="onClickCounter()" type="button">点我！</button></p>
+		</div>
+		<div style="border: 2px dashed #ccc; width: 320px; text-align: center">
+			<label for="site_name">网站名：</label><input type="text" name="site_name"/><br>
+			<label for="site_url">网址：</label><input type="text" name="site_url"><br>
+			<input type="button" onclick="save()" value="保存记录">	
+			<hr/>
+			<label for="site_search">查找网址：</label><input type="text" name="site_search"><br>
+			<input type="button" onclick="find()" value="查找网址"><br>
+			<p id="find_result"><br></p>
+			<script type="text/javascript">
+				function save(){
+					var site_name = document.getElementById("site_name").value;
+					var site_url = document.getElementById("site_url").value;
+					localStorage.setItem(site_name, site_url);
+					alert("添加成功！");
+				}
+
+				function find(){
+					var search_site = document.getElementById("site_search").value;
+					var site_name = localStorage.getItem(search_site);
+					var find_result = document.getElementById("find_result");
+					find_result.innerHTML = search_site + "的网址是：" + site_name;
+				}
+			</script>
+		</div>
+		<div class="dropdown">
+			<button class="dropbtn">下拉菜单</button>
+			<div class="dropdown-content">
+				<a href="http://www.baidu.com">百度</a>
+				<a href="http://www.pixiv.com">Pixiv</a>
+				<a href="http://www.bilibili.com">Bilibili</a>
+			</div>
+		</div>
+
+		<h2 style="text-align: center">一段视频</h2>
+		<div id="video_palyer" style="text-align: center;">
+			<button onclick="playOrPause()">播放/暂停</button>
+			<button onclick="zoomOut()">放大</button>
+			<button onclick="zoomIn()">缩小</button>
+			<button onclick="normalize()">普通尺寸</button><br>
+			<video id="video1" width="420">
+				<source src="http://www.runoob.com/try/demo_source/mov_bbb.mp4" type="video/mp4">
+				你的浏览器暂不支持HTML5播放！
+			</video>
+			<script type="text/javascript">
+				var mVideo = document.getElementById("video1");
+				function playOrPause(){
+					if(mVideo.paused){
+						mVideo.play();
+					} else {
+						mVideo.pause();
+					}
+				}
+
+				function zoomOut(){
+					mVideo.width = 560;
+				}
+
+				function zoomIn(){
+					mVideo.width = 320;
+				}
+
+				function normalize(){
+					mVideo.width = 420;
+				}
+			</script>
+		</div>
+
+		<div>
+			<div id="canvas1" style="height: 200px; width: 400px; float: left; margin-top: 100px">
+			<canvas id="mCanvas1" style="border: 1px solid #000000"></canvas>
+			<script type="text/javascript">
+				var c=document.getElementById("mCanvas1");
+				var ctx=c.getContext("2d");
+				ctx.fillStyle="#FF0000";
+				ctx.fillRect(0,0,150,75); <!--在画布上绘制 150x75 的矩形，从左上角开始 (0,0)-->
+				ctx.font="30px Arial"
+				ctx.strokeText("Hello world!", 10, 120);
+			</script>
+			</div>
+			<div id="canvas2" style="height: 200px; width: 400px; float: left; margin-top: 100px">
+				<canvas id="mCanvas2" style="border: 1px solid #000000"></canvas>
+				<script type="text/javascript">
+					var c = document.getElementById("mCanvas2");
+					var ctx = c.getContext("2d");
+					ctx.moveTo(0,0); <!--开始坐标-->
+					ctx.lineTo(400,200); <!--结束坐标-->
+					ctx.stroke(); <!--实际上我们调用了ink的方法，如stroke或fill-->	
+				</script>
+			</div>
+			<div id="canvas3" style="height: 200px; widows: 400px; float: left; margin-top: 100px">
+				<div id="img" style="float: left">
+					<p>Source Image:</p>
+					<img id="scream" alt="The Scream" height="277" width="220" src="http://www.runoob.com/try/demo_source/img_the_scream.jpg">
+				</div>
+				<div id="img_canvas" style="float: left; margin-left: 20px">
+					<p>Canvas Image:</p>
+					<canvas id="mCanvas3" style="border: 1px solid #000000" width="250" height="300"></canvas>
+					<script type="text/javascript">
+						var c = document.getElementById("mCanvas3");
+						var ctx = c.getContext("2d");
+						var img = document.getElementById("scream");
+						img.onload = function(){
+							ctx.drawImage(img, 10, 10);
+						}
+					</script>
+				</div>
+			</div>
+		</div>
+		
+	</body>
+</html>
