@@ -1,5 +1,7 @@
 package com.jyutwaa.zhaoziliang.glimpse.Api;
 
+import com.jyutwaa.zhaoziliang.glimpse.Model.Bilibili.CommentBody;
+
 import retrofit2.http.GET;
 import rx.Observable;
 
@@ -10,5 +12,5 @@ import rx.Observable;
 public interface BilibiliCommentApi {
 
     @GET("/feedback")
-    Observable<>
+    Observable<CommentBody> getCommentBody();
 }
