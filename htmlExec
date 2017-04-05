@@ -84,6 +84,7 @@
 			margin: 5px;
 			float: left;
 			width: 180px;
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 		}
 
 		.img:hover {
@@ -100,12 +101,66 @@
 			text-align: center;
 		}
 
+		@keyframes logo_anim {
+			from{
+				background-color: red;
+			}
+
+			to {
+				background-color: yellow;
+			}
+		}
+
+		.rotate_square {
+			width: 100px;
+			height: 100px;
+			text-align: center;
+			word-break: break-all;
+			background-color: blue;
+			transition: width 2s, height 2s, transform 2s;
+			animation: logo_anim 2s;
+			position: relative;
+			left: 50%;
+		}
+
+		.rotate_square:hover {
+			width: 200px;
+			height: 200px;
+			transform: rotate(360deg);
+		}
+
+		.button {
+			  display: inline-block;
+			  padding: 15px 25px;
+			  font-size: 24px;
+			  cursor: pointer;
+			  text-align: center;   
+			  text-decoration: none;
+			  outline: none;
+			  color: #fff;
+			  background-color: #4CAF50;
+			  border: none;
+			  border-radius: 15px;
+			  box-shadow: 0 9px #999;
+			  position: relative;
+			  top: 200px;
+			  left: 100px;
+		}
+
+		.button:hover {background-color: #3e8e41}
+
+		.button:active {
+			  background-color: #3e8e41;
+			  box-shadow: 0 5px #666;
+			  transform: translateY(4px);
+		}
+
 
 	</style>
 	</head>
 	<body>
 		<h1 
-		style="background-color: yellow;font-family: verdana;text-align: center;">Hello world!</h1>
+		style="background-color: yellow;font-family: verdana;text-align: center;animation: logo_anim 2s">Hello world!</h1>
 		<a 
 		href="http://www.baidu.com">百度</a>
 		<table border="1" style="margin-top: 20px">
@@ -261,7 +316,8 @@
 				}
 			</script>
 		</div>
-
+		<p style="text-align: center; background-color: yellow; height: 200px; color: #000000; font-family: Arial; font-size: 60px;">旋转LOGO</p>
+		<div class="rotate_square">我是logo我是logo我是logo我是logo我是logo我是logo我是logo</div>
 		<div>
 			<div id="canvas1" style="height: 200px; width: 400px; float: left; margin-top: 100px">
 			<canvas id="mCanvas1" style="border: 1px solid #000000"></canvas>
@@ -284,7 +340,8 @@
 					ctx.stroke(); <!--实际上我们调用了ink的方法，如stroke或fill-->	
 				</script>
 			</div>
-			<div id="canvas3" style="height: 200px; widows: 400px; float: left; margin-top: 100px">
+			<p style="text-align: center; background-color: green; height: 200px; color: #ffffff; font-family: Arial; font-size: 60px;clear: both">Canvas加载图片</p>
+			<div id="canvas3" style="height: 200px; widows: 400px; float: left;position: relative;left: 40%">
 				<div id="img" style="float: left">
 					<p>Source Image:</p>
 					<img id="scream" alt="The Scream" height="277" width="220" src="http://www.runoob.com/try/demo_source/img_the_scream.jpg">
@@ -302,6 +359,7 @@
 					</script>
 				</div>
 			</div>
+			<p style="text-align: center; background-color: pink; height: 200px; color: #ffffff; font-family: Arial; font-size: 60px;clear: both;position: relative;top: 200px">CSS3按钮动画<button class="button">Click Me</button></p>
 		</div>
 		
 	</body>

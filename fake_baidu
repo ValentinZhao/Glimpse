@@ -1,0 +1,114 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>百度一下，你就知道</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		a.nav {
+			display: inline;
+			font-size: 13px;
+			font-weight: bold;
+			color: #333;
+			float: left;
+			margin: 10px;
+			padding-top: 10px;
+			cursor: pointer;
+			text-align: center;
+			text-decoration: underline;
+		}
+
+		#more {
+			width: 80px;
+			height: 50px;
+			margin: 0 auto;
+			padding: 4px;
+			text-align: center;
+			background-color: #3385ff;
+			color: white;
+			cursor: pointer;
+		}
+
+		.core_wrapper {
+			display: block;
+			position: absolute;
+			left: 43%;
+			top: 25%;
+		}
+
+		.lg {
+			width: 270px;
+			height: 129px;
+		}
+
+		.input_wrapper {
+			display: inline;
+			width: 540px;
+			height: 36px;
+			position: relative;
+			top: 10px;
+			right: 40%;
+			border: 1px solid #D3D3D3;
+			float: left;	
+		}
+
+		.input_wrapper:hover {
+			border: 1px solid #BEBEBE;
+		}
+
+		.input_wrapper:visited {
+			border:1px solid #3385ff;
+		}
+
+		.input_wrapper input {
+			width: 500px;
+			height: 22px;
+			cursor: auto;
+			margin: 7px;
+			border: 0;
+		}
+
+		.input_wrapper input:focus {
+			outline: none;
+		}
+
+		.search_btn {
+			background-color: #3385ff;
+			color: white;
+			width: 100px;
+			height: 36px;
+			font-size: 15px;
+			text-align: center;
+			cursor: pointer;
+			padding: 9px 20px;
+			position: relative;
+			top: 18px;
+			right: 259px;
+		}
+
+		.search_btn:hover {
+			background-color: #317ef3;
+		}
+		
+	</style>
+</head>
+<body>
+	<div style="position: absolute;right: 0;top: 0">
+		<a class="nav">糯米</a>
+		<a class="nav">新闻</a>
+		<a class="nav">hao123</a>
+		<a class="nav">地图</a>
+		<a class="nav">视频</a>
+		<a class="nav">贴吧</a>
+		<a class="nav">登录</a>
+		<a class="nav">设置</a>
+		<a class="nav" style="text-decoration: none"><span id="more">更多产品</span></a>
+	</div>
+	<div class="core_wrapper">
+		<div class="lg">
+			<img src="https://www.baidu.com/img/bd_logo1.png" width="270" height="129">
+		</div>
+		<span class="input_wrapper"><input type="text" name="search"></span>
+		<span class="search_btn">百度一下</span>
+	</div>
+</body>
+</html>
