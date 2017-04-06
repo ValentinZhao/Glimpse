@@ -3,6 +3,7 @@ package com.jyutwaa.zhaoziliang.glimpse.Api;
 import com.jyutwaa.zhaoziliang.glimpse.Model.Bilibili.CommentBody;
 
 import retrofit2.http.GET;
+import retrofit2.http.Query;
 import rx.Observable;
 
 /**
@@ -12,5 +13,5 @@ import rx.Observable;
 public interface BilibiliCommentApi {
 
     @GET("/feedback")
-    Observable<CommentBody> getCommentBody();
+    Observable<CommentBody> getCommentBody(@Query("aid") String aid);
 }
