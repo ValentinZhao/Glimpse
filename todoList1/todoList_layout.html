@@ -9,20 +9,28 @@
     <body>
         <h1>TO-DO List</h1>
         <div class="event_input_zone">
-            <input type="text" class="event_wrapper">
+            <input type="text" class="event_wrapper" id="event_input">
         </div>
-        <div class="event_add_btn"><span class="event_add_btn_content">ADD</span></div>
+        <div class="event_add_btn" onclick="addEvents()"><span class="event_add_btn_content">ADD</span></div>
         <div class="all_event_wrapper">
             <div class="event_no_finish">
-                
+                <table class="table_no_finish">
+                	<tbody class="no_finish_body">
+                		
+                	</tbody>
+                </table>
             </div>
             <div class="finish_btn_wrapper">
                 <div class="finish_btn">
-                    <span class="finish_btn_content">已完成>></span>
+                    <span class="finish_btn_content">已完成<br>>></span>
                 </div>
             </div>
             <div class="event_finished">
-                
+                <table class="table_finished">
+                	<tbody class="finished_body">
+                		
+                	</tbody>
+                </table>
             </div>
         </div>
     </body>

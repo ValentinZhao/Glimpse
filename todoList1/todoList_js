@@ -1,0 +1,53 @@
+var todoList = null;
+
+(function() {
+    function init() {
+        var str = localStorage.getItem("todoList");
+        if (str) {
+            todoList = JSON.parse(str);
+            renderHTML();
+        } else {
+            todoList = [];
+        }
+    }
+})();
+
+function renderHTML() {
+    if (todoList) {
+        for (var index in todoList) {
+            var todo = todoList[index];
+            addEvents(todo);
+        }
+    }
+}
+
+function addEvents() {
+    var mInput = document.getElementById("event_input");
+    var mEvent = mInput.value;
+    mInput.value = "";
+    var todo = { 'event': mEvent, 'isFinished': false };
+    createTr(todo);
+    todoList.push(todo);
+    localStorage.setItem("todoList", JSON.stringify(todoList));
+}
+
+function createTr(todo){
+    var notFinishedBody = document.querySelector(".no_finish_body");
+    var finishedBody = document.querySelector(".finished_body");
+    var tr = document.createElement("tr");
+    var td = document.createElement("td");
+    var textTd = document.createElement("td");
+    var tdContent = document.createElement("input");
+    var text = document.createTextNode(mEvent);
+    tdContent.setAttribute("type", "checkbox");
+    tdContent.onclick = tdContentClick;
+    td.appendChild(tdContent);
+    textTd.appendChild(text);
+    tr.appendChild(td);
+    tr.appendChild(textTd);
+    notFinishedBody.appendChild(tr);
+}
+
+function tdContentClick(){
+    
+}

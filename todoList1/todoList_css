@@ -89,12 +89,12 @@ div.event_input_zone {
 }
 
 .finish_btn_wrapper {
-	position: relative;
-	float: left;
-	border: 2px solid red;
+    position: relative;
+    float: left;
+    border: 2px solid red;
     left: 5%;
-	width: 9.5%;
-	height: 100%;
+    width: 9.5%;
+    height: 100%;
 }
 
 .finish_btn {
@@ -122,4 +122,34 @@ div.event_input_zone {
     left: 20%;
     top: 30%;
     text-align: center;
+}
+
+.table_no_finish {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border: 1px solid green;
+}
+
+.table_finished {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border: 1px solid green;
+}
+
+.no_finish_body {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.finished_body {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 100%;
 }
