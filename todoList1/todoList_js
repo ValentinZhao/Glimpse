@@ -1,53 +1,107 @@
 var todoList = null;
+// (function() {
 
-(function() {
-    function init() {
-        var str = localStorage.getItem("todoList");
-        if (str) {
-            todoList = JSON.parse(str);
-            renderHTML();
-        } else {
-            todoList = [];
-        }
-    }
-})();
+
+//     function init() {
+//         var str = localStorage.getItem("todoList");
+//         if (str) {
+//             todoList = JSON.parse(str);
+//             renderHTML();
+//         } else {
+//             todoList = [];
+//         }
+//     }
+//     init();
+
+
+// })();
 
 function renderHTML() {
     if (todoList) {
         for (var index in todoList) {
             var todo = todoList[index];
-            addEvents(todo);
+            createTr(todo);
         }
     }
 }
 
 function addEvents() {
-    var mInput = document.getElementById("event_input");
+    var mInput = document.querySelector("#event_input");
     var mEvent = mInput.value;
     mInput.value = "";
     var todo = { 'event': mEvent, 'isFinished': false };
     createTr(todo);
-    todoList.push(todo);
+    // todoList.push(todo);
     localStorage.setItem("todoList", JSON.stringify(todoList));
 }
 
-function createTr(todo){
-    var notFinishedBody = document.querySelector(".no_finish_body");
-    var finishedBody = document.querySelector(".finished_body");
+function createTr(todo) {
+    var mButton = document.querySelector(".event_add_btn");
+    var tbody = document.querySelector(".no_finish_body");
     var tr = document.createElement("tr");
     var td = document.createElement("td");
     var textTd = document.createElement("td");
     var tdContent = document.createElement("input");
-    var text = document.createTextNode(mEvent);
+    var text = document.createTextNode(todo.event);
+    var delTd = document.createElement("td");
+    var span = document.createElement("span");
+    span.className = "delete_item_btn";
+    span.onclick = deleteItem;
+    span.innerHTML = "删除";
     tdContent.setAttribute("type", "checkbox");
-    tdContent.onclick = tdContentClick;
+    textTd.style.color = 'red';
+    tdContent.onclick = function tdContentClick() {
+        if (tdContent.checked) {
+            textTd.style.color = 'green';
+            textTd.style.textDecoration = 'line-through';
+        } else {
+            textTd.style.color = 'red';
+            textTd.style.textDecoration = 'none';
+        }
+    };
+    delTd.appendChild(span);
     td.appendChild(tdContent);
     textTd.appendChild(text);
     tr.appendChild(td);
     tr.appendChild(textTd);
-    notFinishedBody.appendChild(tr);
+    tr.appendChild(delTd);
+    tbody.appendChild(tr);
 }
 
-function tdContentClick(){
-    
+function finishEvent() {
+    console.log("点击已完成");
+    var leftBody = document.querySelector('.no_finish_body');
+    var rightBody = document.querySelector('.finished_body');
+    var finishedList = [];
+    for (let i = 0; i < leftBody.children.length; i++) {
+        var tr = leftBody.children[i];
+        if (tr.children[0].firstChild.checked) { //because <tr><td><input></td><td>xxx</td></tr>
+            tr.removeChild(tr.lastChild);
+            finishedList.push(tr);
+            leftBody.removeChild(tr);
+        }
+    }
+    for (let i = 0; i < finishedList.length; i++) {
+        finishedList[i].className = "finish_body_text";
+        var td = document.createElement("td");
+        var span = document.createElement("span");
+        span.className = "delete_item_btn";
+        span.onclick = deleteItem;
+        span.innerHTML = "删除";
+        //从内到外确定好子节点与父节点
+        td.appendChild(span);
+        finishedList[i].appendChild(td);
+        rightBody.appendChild(finishedList[i]);
+    }
+}
+/**
+ * 也就是说onclick属性绑定方法时，只需要给他一个方法名，不需要按Java一样规定参数。
+ * @param td 
+ * @param item 
+ */
+function deleteItem() {
+    //this是span，往上找父节点删除即可
+    var tbody = this.parentElement.parentElement.parentElement;
+    var tr = this.parentElement.parentElement;
+    tbody.removeChild(tr);
 }
