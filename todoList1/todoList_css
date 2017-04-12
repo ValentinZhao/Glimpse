@@ -37,7 +37,7 @@ div.event_input_zone {
     width: 70px;
     position: absolute;
     left: 76%;
-    top: 20.7%;
+    top: 20.5%;
 }
 
 .event_add_btn_content {
@@ -68,7 +68,7 @@ div.event_input_zone {
     top: 30%;
     width: 80%;
     height: 50%;
-    border: 2px dotted black;
+    /*border: 2px dotted black;*/
 }
 
 .event_no_finish {
@@ -91,7 +91,7 @@ div.event_input_zone {
 .finish_btn_wrapper {
     position: relative;
     float: left;
-    border: 2px solid red;
+    /*border: 2px solid red;*/
     left: 5%;
     width: 9.5%;
     height: 100%;
@@ -147,6 +147,12 @@ div.event_input_zone {
     height: 100%;
 }
 
+.no_finish_body_text {
+    display: block;
+    position: relative;
+    margin-bottom: 5px;
+}
+
 .finished_body {
     display: block;
     position: relative;
@@ -177,7 +183,49 @@ div.event_input_zone {
     opacity: 0.6;
 }
 
-.delete_item_btn:active {
+.edit_item_btn:active {
     opacity: 0.9;
 }
-.delete_item_btn:visited {}
+.edit_item_btn:visited {}
+
+.edit_item_btn {
+    background-color: indigo;
+    color: white;
+    width: 30px;
+    height: 20px;
+    cursor: pointer;
+    padding: 3px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.edit_item_btn:linked {}
+.edit_item_btn:hover {
+    opacity: 0.6;
+}
+
+.edit_item_btn:active {
+    opacity: 0.9;
+}
+.edit_item_btn:visited {}
+
+.finish_edit_item_btn {
+    background-color: green;
+    color: white;
+    width: 30px;
+    height: 20px;
+    cursor: pointer;
+    padding: 3px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.finish_edit_item_btn:linked {}
+.finish_edit_item_btn:hover {
+    opacity: 0.6;
+}
+
+.finish_edit_item_btn:active {
+    opacity: 0.9;
+}
+.finish_edit_item_btn:visited {}

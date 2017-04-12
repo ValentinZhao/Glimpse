@@ -43,13 +43,19 @@ function createTr(todo) {
     var textTd = document.createElement("td");
     var tdContent = document.createElement("input");
     var text = document.createTextNode(todo.event);
+    var editTd = document.createElement("td");
+    var editSpan = document.createElement("span");
     var delTd = document.createElement("td");
     var span = document.createElement("span");
     span.className = "delete_item_btn";
     span.onclick = deleteItem;
     span.innerHTML = "删除";
+    editSpan.className = "edit_item_btn";
+    editSpan.onclick = editItem;
+    editSpan.innerHTML = "编辑";
     tdContent.setAttribute("type", "checkbox");
     textTd.style.color = 'red';
+    tr.className = 'no_finish_body_text';
     tdContent.onclick = function tdContentClick() {
         if (tdContent.checked) {
             textTd.style.color = 'green';
@@ -59,11 +65,14 @@ function createTr(todo) {
             textTd.style.textDecoration = 'none';
         }
     };
+    //从内到外确定好子节点与父节点
+    editTd.appendChild(editSpan);
     delTd.appendChild(span);
     td.appendChild(tdContent);
     textTd.appendChild(text);
     tr.appendChild(td);
     tr.appendChild(textTd);
+    tr.appendChild(editTd);
     tr.appendChild(delTd);
     tbody.appendChild(tr);
 }
@@ -76,21 +85,12 @@ function finishEvent() {
     for (let i = 0; i < leftBody.children.length; i++) {
         var tr = leftBody.children[i];
         if (tr.children[0].firstChild.checked) { //because <tr><td><input></td><td>xxx</td></tr>
-            tr.removeChild(tr.lastChild);
             finishedList.push(tr);
             leftBody.removeChild(tr);
         }
     }
     for (let i = 0; i < finishedList.length; i++) {
         finishedList[i].className = "finish_body_text";
-        var td = document.createElement("td");
-        var span = document.createElement("span");
-        span.className = "delete_item_btn";
-        span.onclick = deleteItem;
-        span.innerHTML = "删除";
-        //从内到外确定好子节点与父节点
-        td.appendChild(span);
-        finishedList[i].appendChild(td);
         rightBody.appendChild(finishedList[i]);
     }
 }
@@ -104,4 +104,50 @@ function deleteItem() {
     var tbody = this.parentElement.parentElement.parentElement;
     var tr = this.parentElement.parentElement;
     tbody.removeChild(tr);
+}
+
+function editItem() {
+    var tr = this.parentElement.parentElement; //span -> td -> tr
+    var textTd = tr.children[1]; //包裹文字span的td
+    var textSpan = textTd.firstChild;
+    var text = textSpan.nodeValue; //取出span内的文字
+    var input = document.createElement("input");
+    input.type = 'text';
+    textTd.removeChild(textSpan);
+    textTd.appendChild(input);
+    input.value = text;
+    /**
+     * 完成从textSpan中取出事件文字并添加到input之后，我们有一个trick:就是把编辑按钮删除掉同时在原位置生成一个
+     * 大小样式完全相同的“完成”按钮，用这个新按钮来执行新的响应事件，也就是完成事件
+     */
+    var finishTd = document.createElement("td");
+    var finishSpan = document.createElement("span");
+    var delTd = tr.lastChild;
+    finishSpan.className = 'finish_edit_item_btn';
+    finishSpan.innerHTML = '完成';
+    finishSpan.onclick = finishEdit;
+    tr.removeChild(this.parentElement);
+    //一定要先确定好父子关系！缺一层都不行
+    finishTd.appendChild(finishSpan);
+    tr.insertBefore(finishTd, delTd);
+}
+
+/**
+ * 那么“完成”按钮要做的事情就是，把input框内修改好的事件，也就是value属性给取出来
+ * 再次把input标签改回span，同时把取好的事件名称返回给span，最后把完成按钮改回编辑
+ * 样式依然为 edit_item_btn，onclick属性改回editItem方法就能完成“编辑-完成”功能互换
+ */
+function finishEdit() {
+    var input = this.parentElement.parentElement.children[1].firstChild; //span -> td -> tr -> td -> input
+    var editTd = this.parentElement;
+    var textTd = input.parentElement; //包装input/span的td
+    var span = document.createElement("span");
+    var eventName = input.value;
+    span.className = 'edit_item_btn';
+    span.innerHTML = '编辑';
+    span.onclick = editItem;
+    textTd.removeChild(input);
+    textTd.innerHTML = eventName;
+    editTd.removeChild(this);
+    editTd.appendChild(span);
 }
