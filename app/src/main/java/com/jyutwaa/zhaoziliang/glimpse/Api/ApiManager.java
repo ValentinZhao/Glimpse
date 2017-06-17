@@ -115,4 +115,21 @@ public class ApiManager {
         }
         return mBilibiliApi;
     }
+
+    public BilibiliCommentApi mBilibiliCommentApi;
+    public BilibiliCommentApi getBilibiliCommentApiService(){
+        if(mBilibiliCommentApi == null){
+            synchronized (monitor){
+                if(mBilibiliCommentApi == null){
+                    mBilibiliCommentApi = new Retrofit.Builder()
+                            .baseUrl("http://api.bilibili.cn")
+                            .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                            .addConverterFactory(GsonConverterFactory.create())
+                            .client(client)
+                            .build().create(BilibiliCommentApi.class);
+                }
+            }
+        }
+        return mBilibiliCommentApi;
+    }
 }
